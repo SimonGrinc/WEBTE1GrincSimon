@@ -1,0 +1,66 @@
+:root {
+  --color-brand: #4287f5;      /* hlavná modrá (napr. na monogram, nadpisy) */
+  --color-brand-light: lightblue; /* svetlomodrá (napr. pozadia sekcií, hover) */
+  --color-accent: #2c6ea6;      /* akcentová, o niečo tmavšia, na dôraz/odkazy */
+  --color-text: black;
+  --color-bg: white;
+
+  --radius: 0.5rem;
+  --space: 1rem;
+}
+
+.monogram__bg {
+  fill: var(--color-brand);
+}
+
+.monogram__text {
+  fill: var(--color-bg);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+header {
+  display: flex;
+  align-items: center; 
+  gap: 0.75rem;
+  max-width: 1200px;
+  margin-inline: auto;
+  justify-content: center;
+}
+
+.hamburger {
+  display: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background-color: var(--color-brand);
+}
+
+@media screen and (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+  }
+
+   .nav-links.is-open {
+    display: flex;       
+   }
+
+  .hamburger {
+    display: block;
+  }
+}
+
+ul{
+    list-style-type: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
