@@ -11,9 +11,23 @@
 
 @font-face {
   font-family: "PoppinsRegular";
-  src: url(../fonts/poppins/Poppins-Regular.ttf) format("truetype");
+  src: url(../fonts/poppins/Poppins-Regular.woff2) format("woff2");
   font-weight: normal;
   font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url(../fonts/poppins/Poppins-Bold.woff2) format("woff2");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url(../fonts/poppins/Poppins-Italic.woff2) format("woff2");
+  font-weight: normal;
+  font-style: italic;
 }
 
 body{
@@ -116,6 +130,10 @@ ul{
     list-style-type: none;
 }
 
+.about-me ul{
+  list-style-type: disc;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -126,4 +144,20 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.about-me{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin: 10px;
+}
+
+@media screen  and (max-width:768px) {
+  .about-me{
+    flex-direction: column;
+  }
+  
 }
