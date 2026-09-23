@@ -9,6 +9,26 @@
   --space: 1rem;
 }
 
+@font-face {
+  font-family: "PoppinsRegular";
+  src: url(../fonts/poppins/Poppins-Regular.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body{
+  font-family:"PoppinsRegular", sans-serif;
+  margin:0;
+}
+
+h1 {
+  font-size: clamp(1.25rem, 5vw, 2rem);
+}
+
+.tagline {
+  font-size: clamp(0.75rem, 2.5vw, 1rem);
+}
+
 .monogram__bg {
   fill: var(--color-brand);
 }
@@ -19,6 +39,18 @@
   font-weight: 700;
 }
 
+.monogram {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0; /* prevents it from getting squished by flex */
+}
+
+@media screen and (max-width: 600px) {
+  .monogram {
+    width: 70px;
+    height: 70px;
+  }
+}
 header {
   display: flex;
   align-items: center; 
@@ -26,10 +58,16 @@ header {
   max-width: 1200px;
   margin-inline: auto;
   justify-content: center;
+  padding: 7px 0;
 }
 
 .hamburger {
   display: none;
+}
+
+nav{
+  background-color: var(--color-brand);
+  padding: 1px 0;
 }
 
 .nav-links {
@@ -38,6 +76,25 @@ header {
   justify-content: center;
   gap: 20px;
   background-color: var(--color-brand);
+}
+
+.nav-links a{
+  color: var(--color-text);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-links a:hover {
+  background-color: var(--color-brand-light);
+  color: var(--color-accent);
+}
+
+.nav-links a.active {
+  background-color: var(--color-brand-light);
+  color: var(--color-accent);
+  font-weight: 700;
 }
 
 @media screen and (max-width: 768px) {
@@ -63,4 +120,10 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
