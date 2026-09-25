@@ -3,17 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Na mape ukázané kde bývam a kde chodím do školy">
+
+    <meta property="og:title" content="Šimon Grinč — Kde som">
+    <meta property="og:description" content="Na mape ukázané kde bývam a kde chodím do školy">
+    <meta property="og:image" content="">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+
     <link rel="stylesheet" href="../css/styles.css">
-
-    <title>Mapa</title>
-
+    <title>Kde som — Šimon Grinč</title>
 </head>
 
 <body>
     <header>
         <svg class="monogram" viewBox="0 0 60 60" role="img" aria-label="Iniciály ŠG">
-            <circle class="monogram__bg" cx="30" cy="30" r="28" />
-            <text class="monogram__text" x="30" y="30" text-anchor="middle" dominant-baseline="central">ŠG</text>
+            <circle class="monogram-bg" cx="30" cy="30" r="28" />
+            <text class="monogram-text" x="30" y="30" text-anchor="middle" dominant-baseline="central">ŠG</text>
         </svg>
         <h1>Šimon Grinč</h1>
         <p class="tagline">študent aplikovanej informatiky, zaujímajú ma webové technológie</p>
@@ -25,30 +35,59 @@
       <ul class="nav-links">
         <li><a href="../index.html">Domov</a></li>
         <li><a href="cv.html">Životopis</a></li>
-        <li><a href="map.html" class="active">Mapa</a></li>
+        <li><a href="map.html">Mapa</a></li>
         <li><a href="schedule.html">Rozvrh</a></li>
         <li><a href="workspace.html">Prac. prostredie</a></li>
       </ul>
     </nav>
     <main>
-        
-        <p><img src="majak-je-jednoducho-ta-najvtipnejsia-budova-aka-existuje-v0-qezd7xda2hqh1.webp" alt="Ferko z kosic"></p>
-        
-    </main>
+        <section class="map-page">
+            <h2>Kde ma nájdete</h2>
+            <p>Na mape je trvalo vyznačená moja škola a bydlisko. Kliknutím na mapu môžeš pridať vlastný bod, pomenovať ho a zistiť vzdialenosť medzi ním a mojou školou alebo bydliskom.</p>
 
+            <div id="map" class="map"></div>
+
+            <div class="map-controls">
+                <div id="mapEmptyState" class="map-empty">
+                    Zatiaľ si nepridal žiadny vlastný bod. Klikni kdekoľvek na mapu a označ miesto, ktoré ťa zaujíma.
+                </div>
+
+                <ul id="pointsList" class="points-list" hidden></ul>
+
+                <form id="distanceForm" class="distance-form" hidden>
+                    <label for="pointSelect">Môj bod
+                        <select id="pointSelect"></select>
+                    </label>
+
+                    <label for="targetSelect">Cieľ
+                        <select id="targetSelect">
+                            <option value="school">Škola</option>
+                            <option value="home">Bydlisko</option>
+                        </select>
+                    </label>
+
+                    <button type="submit">Vypočítať vzdialenosť</button>
+                </form>
+
+                <p id="distanceResult" aria-live="polite"></p>
+            </div>
+        </section>
+    </main>
     <footer>
         <address>
-        Kontakt: <a href="xgrinc@stuba.sk">xgrinc@stuba.sk</a>
+            Kontakt: <a href="mailto:xgrinc@stuba.sk">xgrinc@stuba.sk</a>
         </address>
 
         <p>2026 Šimon Grinč</p>
 
         <p>
-            Zdroje: 
-            Mapové podklady © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> prispievatelia
+             Zdroje:
+            Mapové podklady © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> prispievatelia,
+            knižnica <a href="https://leafletjs.com/" target="_blank" rel="noopener noreferrer">Leaflet</a>
         </p>
     </footer>
-
-    <script src="js/script.js"></script>
+     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="../js/map.js"></script>
 </body>
 </html>

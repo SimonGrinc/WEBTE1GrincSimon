@@ -3,17 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TU DOPLN POPIS STRANKY">
+
+    <meta property="og:title" content="Šimon Grinč — Životopis>
+    <meta property="og:description" content="Životopis Šimon Grinč">
+    <meta property="og:image" content="">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+
     <link rel="stylesheet" href="../css/styles.css">
-
-    <title>Životopis</title>
-
+    <link rel="stylesheet" href="../css/print.css" media="print">
+    
+    <title>Môj životopis</title>
 </head>
 
 <body>
     <header>
         <svg class="monogram" viewBox="0 0 60 60" role="img" aria-label="Iniciály ŠG">
-            <circle class="monogram__bg" cx="30" cy="30" r="28" />
-            <text class="monogram__text" x="30" y="30" text-anchor="middle" dominant-baseline="central">ŠG</text>
+            <circle class="monogram-bg" cx="30" cy="30" r="28" />
+            <text class="monogram-text" x="30" y="30" text-anchor="middle" dominant-baseline="central">ŠG</text>
         </svg>
         <h1>Šimon Grinč</h1>
         <p class="tagline">študent aplikovanej informatiky, zaujímajú ma webové technológie</p>
@@ -24,21 +33,66 @@
       </div>
       <ul class="nav-links">
         <li><a href="../index.html">Domov</a></li>
-        <li><a href="cv.html" class="active">Životopis</a></li>
+        <li><a href="cv.html">Životopis</a></li>
         <li><a href="map.html">Mapa</a></li>
         <li><a href="schedule.html">Rozvrh</a></li>
         <li><a href="workspace.html">Prac. prostredie</a></li>
       </ul>
     </nav>
     <main>
-        
-        <p><img src="majak-je-jednoducho-ta-najvtipnejsia-budova-aka-existuje-v0-qezd7xda2hqh1.webp" alt="Ferko z kosic"></p>
-        
+        <section class="cv">
+            <div class="cv-col cv-col-left">
+                <img src="../images/TisI.jpg" alt="Šimon Grinč" width="300" height="300" loading="lazy">
+                <address>
+                    <p><a href="mailto:xgrinc@stuba.sk">xgrinc@stuba.sk</a></p>
+                    <p><a href="tel:+421900000000">+421 900 000 000</a></p>
+                    <p><!-- TU DOPLN adresu/mesto, ak chces --></p>
+                </address>
+            </div>
+
+            <div class="cv-col cv-col-right">
+                <h2>Vzdelanie</h2>
+                <article>
+                    <h3>Bc. Aplikovaná informatika</h3>
+                    <p>Fakulta elektrotechniky a informatiky STU, 2024 – doteraz</p>
+                    <p>Zameranie: Modelovanie a simulácia udalostných systémov</p>
+                </article>
+
+                <article>
+                    <h3>Elektrikár — Počítačové systémy</h3>
+                    <p>Stredná priemyselná škola techniky a dizajnu, Poprad, 2020 – 2024</p>
+                </article>
+
+                <h2>Počítačové zručnosti</h2>
+                    <ul class="skills">
+                        <li><span class="skills-name">Python</span><span class="skills-level">Začiatočník</span></li>
+                        <li><span class="skills-name">C</span><span class="skills-level">Začiatočník</span></li>
+                        <li><span class="skills-name">Java</span><span class="skills-level">Začiatočník</span></li>
+                        <li><span class="skills-name">C++</span><span class="skills-level">Začiatočník</span></li>
+                        <li><span class="skills-name">C#</span><span class="skills-level">Začiatočník</span></li>
+                        <li><span class="skills-name">HTML &amp; CSS</span><span class="skills-level">Začiatočník</span></li>
+                        <li><span class="skills-name">MySQL</span><span class="skills-level">Začiatočník</span></li>
+                        <li><span class="skills-name">R</span><span class="skills-level">Začiatočník</span></li>
+                    </ul>
+
+                <h2>Jazykové zručnosti</h2>
+                <ul class="skills">
+                    <li>
+                        <span class="skills-name">Slovenčina</span>
+                        <span class="skills-level">Materinský jazyk</span>
+                    </li>
+                    <li>
+                        <span class="skills-name">Angličtina</span>
+                        <span class="skills-level">B2</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
     </main>
 
     <footer>
         <address>
-        Kontakt: <a href="xgrinc@stuba.sk">xgrinc@stuba.sk</a>
+            Kontakt: <a href="mailto:xgrinc@stuba.sk">xgrinc@stuba.sk</a>
         </address>
 
         <p>2026 Šimon Grinč</p>
@@ -49,6 +103,6 @@
         </p>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 </html>

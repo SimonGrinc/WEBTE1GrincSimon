@@ -3,17 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Prostredie kde pracujem">
+
+    <meta property="og:title" content="Šimon Grinč — Prac. Prostredie">
+    <meta property="og:description" content="Prostredie kde pracujem"">
+    <meta property="og:image" content="">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+
     <link rel="stylesheet" href="../css/styles.css">
-
-    <title>Pracovné prostredie</title>
-
+    <title>NAZOV STRANKY — Šimon Grinč</title>
 </head>
 
 <body>
     <header>
         <svg class="monogram" viewBox="0 0 60 60" role="img" aria-label="Iniciály ŠG">
-            <circle class="monogram__bg" cx="30" cy="30" r="28" />
-            <text class="monogram__text" x="30" y="30" text-anchor="middle" dominant-baseline="central">ŠG</text>
+            <circle class="monogram-bg" cx="30" cy="30" r="28" />
+            <text class="monogram-text" x="30" y="30" text-anchor="middle" dominant-baseline="central">ŠG</text>
         </svg>
         <h1>Šimon Grinč</h1>
         <p class="tagline">študent aplikovanej informatiky, zaujímajú ma webové technológie</p>
@@ -23,32 +30,34 @@
         <img src="../images/MenuICO.svg" alt="Menu" width="24" height="24">
       </div>
       <ul class="nav-links">
-        <li><a href="../index.html" >Domov</a></li>
+        <li><a href="../index.html">Domov</a></li>
         <li><a href="cv.html">Životopis</a></li>
         <li><a href="map.html">Mapa</a></li>
         <li><a href="schedule.html">Rozvrh</a></li>
-        <li><a href="workspace.html" class="active">Prac. prostredie</a></li>
+        <li><a href="workspace.html">Prac. prostredie</a></li>
       </ul>
     </nav>
     <main>
-        
-        <p><img src="majak-je-jednoducho-ta-najvtipnejsia-budova-aka-existuje-v0-qezd7xda2hqh1.webp" alt="Ferko z kosic"></p>
-        
+        <div class="workspace">
+            <img src="../images/stol.jpg" alt="Môj pracovný stôl" width="500" height="300">
+        </div>
     </main>
 
     <footer>
         <address>
-        Kontakt: <a href="xgrinc@stuba.sk">xgrinc@stuba.sk</a>
+            Kontakt: <a href="mailto:xgrinc@stuba.sk">xgrinc@stuba.sk</a>
         </address>
 
         <p>2026 Šimon Grinč</p>
 
         <p>
-            Zdroje: 
-            Mapové podklady © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> prispievatelia
+            Zdroje:
+            Mapové podklady © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> prispievatelia,
+            knižnica <a href="https://leafletjs.com/" target="_blank" rel="noopener noreferrer">Leaflet</a>
         </p>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/workspace.js"></script>
 </body>
 </html>
