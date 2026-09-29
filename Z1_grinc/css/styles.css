@@ -117,7 +117,16 @@ nav{
   font-weight: 700;
 }
 
+.hamburger img {
+  width: 36px;  
+  height: 36px;
+}
+
 @media screen and (max-width: 768px) {
+  nav {
+    padding: 0.75rem 1rem;   
+  }
+
   .nav-links {
     display: none;
     flex-direction: column;
@@ -127,8 +136,13 @@ nav{
     display: flex;       
    }
 
+   .nav-links a {
+    display: block;
+  }
+
   .hamburger {
     display: block;
+    cursor: pointer;
   }
 }
 
