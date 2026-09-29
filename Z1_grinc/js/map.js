@@ -1,4 +1,4 @@
-const SCHOOL = { name: "FEI STU", lat: 48.1512, lng: 17.0722 };
+const SCHOOL = { name: "FEI STU", lat: 48.1518, lng: 17.0732 };
 const HOME = { name: "Bydlisko", lat: 48.1588, lng: 17.0641 };
 
 const STORAGE_KEY = "map-user-points";
