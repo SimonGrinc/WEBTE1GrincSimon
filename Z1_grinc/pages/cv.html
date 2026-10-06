@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="sk">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Moje zručnosti a vzdelanie">
 
-    <meta property="og:title" content="Šimon Grinč — Životopis>
+    <meta property="og:title" content="Šimon Grinč — Životopis">
     <meta property="og:description" content="Moje zručnosti a vzdelanie">
-    <meta property="og:image" content="">
+    <meta property="og:image" content="../images/TisI.jpg">
     <meta property="og:type" content="website">
 
-    <link rel="icon" type="image/svg+xml" href="../images/favicon.ico">
+    <link rel="icon" href="../images/favicon.ico">
 
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/print.css" media="print">
-    
-    <title>Môj životopis</title>
+
+    <title>Životopis — Šimon Grinč</title>
 </head>
 
 <body>
@@ -25,19 +26,20 @@
             <text class="monogram-text" x="30" y="30" text-anchor="middle" dominant-baseline="central">ŠG</text>
         </svg>
         <h1>Šimon Grinč</h1>
-        <p class="tagline">študent aplikovanej informatiky, zaujímajú ma webové technológie</p>
+        <p class="tagline">študent aplikovanej informatiky, zaujímajú ma aplikácie</p>
     </header>
-   <nav>
-      <div class="hamburger">
-        <img src="../images/MenuICO.svg" alt="Menu" width="24" height="24">
-      </div>
-      <ul class="nav-links">
-        <li><a href="../index.html">Domov</a></li>
-        <li><a href="cv.html">Životopis</a></li>
-        <li><a href="map.html">Mapa</a></li>
-        <li><a href="schedule.html">Rozvrh</a></li>
-        <li><a href="workspace.html">Prac. prostredie</a></li>
-      </ul>
+    <nav>
+        <button class="hamburger" type="button" aria-expanded="false" aria-controls="nav-links"
+            aria-label="Otvoriť menu">
+            <img src="../images/MenuICO.svg" alt="" width="24" height="24">
+        </button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="../index.html">Domov</a></li>
+            <li><a href="cv.html" aria-current="page">Životopis</a></li>
+            <li><a href="map.html">Mapa</a></li>
+            <li><a href="schedule.html">Rozvrh</a></li>
+            <li><a href="workspace.html">Prac. prostredie</a></li>
+        </ul>
     </nav>
     <main>
         <section class="cv">
@@ -45,7 +47,7 @@
                 <img src="../images/TisI.jpg" alt="Šimon Grinč" width="300" height="300" loading="lazy">
                 <address>
                     <p><a href="mailto:xgrinc@stuba.sk">xgrinc@stuba.sk</a></p>
-                    <p><a href="tel:+4210944414305">+421 0944 441 4305</a></p>
+                    <p><a href="tel:+421944441305">+421 944 441 305</a></p>
                 </address>
             </div>
 
@@ -63,16 +65,17 @@
                 </article>
 
                 <h2>Počítačové zručnosti</h2>
-                    <ul class="skills">
-                        <li><span class="skills-name">Python</span><span class="skills-level">Začiatočník</span></li>
-                        <li><span class="skills-name">C</span><span class="skills-level">Začiatočník</span></li>
-                        <li><span class="skills-name">Java</span><span class="skills-level">Začiatočník</span></li>
-                        <li><span class="skills-name">C++</span><span class="skills-level">Začiatočník</span></li>
-                        <li><span class="skills-name">C#</span><span class="skills-level">Začiatočník</span></li>
-                        <li><span class="skills-name">HTML &amp; CSS</span><span class="skills-level">Začiatočník</span></li>
-                        <li><span class="skills-name">MySQL</span><span class="skills-level">Začiatočník</span></li>
-                        <li><span class="skills-name">R</span><span class="skills-level">Začiatočník</span></li>
-                    </ul>
+                <ul class="skills">
+                    <li><span class="skills-name">Python</span><span class="skills-level">Začiatočník</span></li>
+                    <li><span class="skills-name">C</span><span class="skills-level">Začiatočník</span></li>
+                    <li><span class="skills-name">Java</span><span class="skills-level">Začiatočník</span></li>
+                    <li><span class="skills-name">C++</span><span class="skills-level">Začiatočník</span></li>
+                    <li><span class="skills-name">C#</span><span class="skills-level">Začiatočník</span></li>
+                    <li><span class="skills-name">HTML &amp; CSS</span><span class="skills-level">Začiatočník</span></li>
+                    <li><span class="skills-name">MySQL</span><span class="skills-level">Začiatočník</span></li>
+                    <li><span class="skills-name">R</span><span class="skills-level">Začiatočník</span></li>
+                    <li><span class="skills-name">MatLab</span><span class="skills-level">Začiatočník</span></li>
+                </ul>
 
                 <h2>Jazykové zručnosti</h2>
                 <ul class="skills">
@@ -91,18 +94,22 @@
 
     <footer>
         <address>
-            Kontakt: <a href="mailto:xgrinc@stuba.sk">xgrinc@stuba.sk</a>
+            <p><a href="mailto:xgrinc@stuba.sk">xgrinc@stuba.sk</a></p>
+            <p><a href="tel:+421944441305">+421 944 441 305</a></p>
         </address>
 
         <p>2026 Šimon Grinč</p>
 
-         <p>
-             Zdroje:
-            Mapové podklady © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> prispievatelia,
+        <p>
+            Zdroje:
+            Mapové podklady © <a href="https://www.openstreetmap.org/copyright" target="_blank"
+                rel="noopener noreferrer">OpenStreetMap</a> prispievatelia,
             knižnica <a href="https://leafletjs.com/" target="_blank" rel="noopener noreferrer">Leaflet</a>
+            Fotografie:vlastné
         </p>
     </footer>
 
     <script src="../js/script.js"></script>
 </body>
+
 </html>

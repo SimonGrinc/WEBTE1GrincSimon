@@ -1,6 +1,11 @@
-var hamburger = document.querySelector('.hamburger');
-var navLinks = document.querySelector('.nav-links');
+const menuButton = document.querySelector(".hamburger");
+const navLinks = document.querySelector(".nav-links");
 
-hamburger.addEventListener('click', function () {
-  navLinks.classList.toggle('is-open');
-});
+if (menuButton && navLinks) {
+  menuButton.addEventListener("click", () => {
+    const isOpen = menuButton.getAttribute("aria-expanded") === "true";
+    menuButton.setAttribute("aria-expanded", String(!isOpen));
+    menuButton.setAttribute("aria-label", isOpen ? "Otvoriť menu" : "Zavrieť menu");
+    navLinks.classList.toggle("is-open", !isOpen);
+  });
+}

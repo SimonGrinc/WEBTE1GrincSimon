@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="sk">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,13 @@
 
     <meta property="og:title" content="Šimon Grinč — Kde som">
     <meta property="og:description" content="Na mape ukázané kde bývam a kde chodím do školy">
-    <meta property="og:image" content="">
+    <meta property="og:image" content="../images/favicon.ico">
     <meta property="og:type" content="website">
 
-    <link rel="icon" type="image/svg+xml" href="../images/favicon.ico">
+    <link rel="icon" href="../images/favicon.ico">
 
-     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 
     <link rel="stylesheet" href="../css/styles.css">
     <title>Kde som — Šimon Grinč</title>
@@ -26,24 +27,26 @@
             <text class="monogram-text" x="30" y="30" text-anchor="middle" dominant-baseline="central">ŠG</text>
         </svg>
         <h1>Šimon Grinč</h1>
-        <p class="tagline">študent aplikovanej informatiky, zaujímajú ma webové technológie</p>
+        <p class="tagline">študent aplikovanej informatiky, zaujímajú ma aplikácie</p>
     </header>
-   <nav>
-      <div class="hamburger">
-        <img src="../images/MenuICO.svg" alt="Menu" width="24" height="24">
-      </div>
-      <ul class="nav-links">
-        <li><a href="../index.html">Domov</a></li>
-        <li><a href="cv.html">Životopis</a></li>
-        <li><a href="map.html">Mapa</a></li>
-        <li><a href="schedule.html">Rozvrh</a></li>
-        <li><a href="workspace.html">Prac. prostredie</a></li>
-      </ul>
+    <nav>
+        <button class="hamburger" type="button" aria-expanded="false" aria-controls="nav-links"
+            aria-label="Otvoriť menu">
+            <img src="../images/MenuICO.svg" alt="" width="24" height="24">
+        </button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="../index.html">Domov</a></li>
+            <li><a href="cv.html">Životopis</a></li>
+            <li><a href="map.html" aria-current="page">Mapa</a></li>
+            <li><a href="schedule.html">Rozvrh</a></li>
+            <li><a href="workspace.html">Prac. prostredie</a></li>
+        </ul>
     </nav>
     <main>
         <section class="map-page">
             <h2>Kde ma nájdete</h2>
-            <p>Na mape je trvalo vyznačená moja škola a bydlisko. Kliknutím na mapu môžeš pridať vlastný bod, pomenovať ho a zistiť vzdialenosť medzi ním a mojou školou alebo bydliskom.</p>
+            <p>Na mape je trvalo vyznačená moja škola a bydlisko. Kliknutím na mapu môžeš pridať vlastný bod, pomenovať
+                ho a zistiť vzdialenosť medzi ním a mojou školou alebo bydliskom.</p>
 
             <div id="map" class="map"></div>
 
@@ -74,20 +77,25 @@
         </section>
     </main>
     <footer>
-        <address>
-            Kontakt: <a href="mailto:xgrinc@stuba.sk">xgrinc@stuba.sk</a>
+       <address>
+            <p><a href="mailto:xgrinc@stuba.sk">xgrinc@stuba.sk</a></p>
+            <p><a href="tel:+421944441305">+421 944 441 305</a></p>
         </address>
 
         <p>2026 Šimon Grinč</p>
 
         <p>
-             Zdroje:
-            Mapové podklady © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> prispievatelia,
+            Zdroje:
+            Mapové podklady © <a href="https://www.openstreetmap.org/copyright" target="_blank"
+                rel="noopener noreferrer">OpenStreetMap</a> prispievatelia,
             knižnica <a href="https://leafletjs.com/" target="_blank" rel="noopener noreferrer">Leaflet</a>
+            Fotografie:vlastné
         </p>
     </footer>
-     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="../js/script.js"></script>
     <script src="../js/map.js"></script>
 </body>
+
 </html>

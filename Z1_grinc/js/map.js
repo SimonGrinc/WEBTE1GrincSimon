@@ -32,22 +32,46 @@ function savePoints(points) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(points));
 }
 
+function createPopupContent(title, text) {
+    const wrapper = document.createElement("div");
+
+    const heading = document.createElement("strong");
+    heading.textContent = title;
+    wrapper.appendChild(heading);
+
+    if (text) {
+        const line = document.createElement("span");
+        line.textContent = text;
+        wrapper.appendChild(document.createElement("br"));
+        wrapper.appendChild(line);
+    }
+
+    return wrapper;
+}
+
 let userPoints = loadPoints();
 const userMarkers = [];
 let activeLine = null;
 
-const map = L.map("map").setView([48.7, 19.0], 7);
+const map = L.map("map");
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     maxZoom: 19
 }).addTo(map);
 
-L.marker([SCHOOL.lat, SCHOOL.lng]).addTo(map)
-    .bindPopup("<strong>" + SCHOOL.name + "</strong><br>Skola");
+map.fitBounds(
+    [[SCHOOL.lat, SCHOOL.lng], [HOME.lat, HOME.lng]],
+    { padding: [60, 60] }
+);
 
-L.marker([HOME.lat, HOME.lng]).addTo(map)
-    .bindPopup("<strong>" + HOME.name + "</strong><br>Bydlisko");
+const schoolMarker = L.marker([SCHOOL.lat, SCHOOL.lng]).addTo(map);
+const homeMarker = L.marker([HOME.lat, HOME.lng]).addTo(map);
+
+function resetFixedPopups() {
+    schoolMarker.bindPopup(createPopupContent(SCHOOL.name, "Škola"));
+    homeMarker.bindPopup(createPopupContent(HOME.name, "Bydlisko"));
+}
 
 function renderPointsList() {
     const list = document.getElementById("pointsList");
@@ -92,14 +116,14 @@ function renderUserMarkers() {
     for (let i = 0; i < userPoints.length; i++) {
         const point = userPoints[i];
         const marker = L.marker([point.lat, point.lng]).addTo(map)
-            .bindPopup("<strong>" + point.name + "</strong>");
+            .bindPopup(createPopupContent(point.name, "Môj bod"));
         userMarkers.push(marker);
     }
 }
 
 function handleMapClick(e) {
-    const name = prompt("Zadaj nazov pre tento bod:");
-    if (!name) return;
+    const name = prompt("Zadaj názov pre tento bod:");
+    if (!name || !name.trim()) return;
 
     userPoints.push({ name: name, lat: e.latlng.lat, lng: e.latlng.lng });
     savePoints(userPoints);
@@ -113,16 +137,30 @@ map.on("click", handleMapClick);
 function handleDistanceSubmit(e) {
     e.preventDefault();
 
-    const pointIndex = document.getElementById("pointSelect").value;
+    const pointIndex = Number(document.getElementById("pointSelect").value);
     const targetKey = document.getElementById("targetSelect").value;
 
     const point = userPoints[pointIndex];
     const target = targetKey === "school" ? SCHOOL : HOME;
+    const targetMarker = targetKey === "school" ? schoolMarker : homeMarker;
 
     const distance = haversineDistance(point.lat, point.lng, target.lat, target.lng);
+    const distanceText = distance.toFixed(2) + " km";
 
     document.getElementById("distanceResult").textContent =
-        "Vzdialenost medzi \"" + point.name + "\" a \"" + target.name + "\": " + distance.toFixed(2) + " km";
+        "Vzdialenosť medzi \"" + point.name + "\" a \"" + target.name + "\": " + distanceText;
+
+    resetFixedPopups();
+    renderUserMarkers();
+
+    const pointMarker = userMarkers[pointIndex];
+
+    pointMarker.setPopupContent(
+        createPopupContent(point.name, "Vzdialenosť do " + target.name + ": " + distanceText)
+    );
+    targetMarker.setPopupContent(
+        createPopupContent(target.name, "Vzdialenosť do " + point.name + ": " + distanceText)
+    );
 
     if (activeLine) {
         map.removeLayer(activeLine);
@@ -130,13 +168,17 @@ function handleDistanceSubmit(e) {
 
     activeLine = L.polyline(
         [[point.lat, point.lng], [target.lat, target.lng]],
-        { color: "#4287f5", weight: 3 }
+        { color: getComputedStyle(document.documentElement).getPropertyValue("--color-brand").trim(), weight: 3 }
     ).addTo(map);
 
+    activeLine.bindTooltip(distanceText, { permanent: true, direction: "center" });
+
     map.fitBounds(activeLine.getBounds(), { padding: [40, 40] });
+    pointMarker.openPopup();
 }
 
 document.getElementById("distanceForm").addEventListener("submit", handleDistanceSubmit);
 
+resetFixedPopups();
 renderPointsList();
 renderUserMarkers();

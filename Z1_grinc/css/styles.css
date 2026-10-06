@@ -1,7 +1,11 @@
+[hidden] {
+  display: none !important;
+}
+
 :root {
   --color-brand: #4287f5;      
   --color-brand-light: lightblue; 
-  --color-accent: #2c6ea6;      
+  --color-accent: #1f5a8a;     
   --color-text: black;
   --color-bg: white;
 
@@ -30,6 +34,11 @@
   font-style: italic;
 }
 
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   margin: 0;
@@ -50,7 +59,7 @@ h1 {
 }
 
 .monogram-bg {
-  fill: var(--color-brand);
+  fill: var(--color-accent);
 }
 
 .monogram-text {
@@ -83,6 +92,10 @@ header {
 
 .hamburger {
   display: none;
+  background: none;
+  border: none;
+  padding: calc(var(--space) / 2);
+  border-radius: var(--radius);
 }
 
 nav{
@@ -111,7 +124,7 @@ nav{
   color: var(--color-accent);
 }
 
-.nav-links a.active {
+.nav-links a[aria-current="page"] {
   background-color: var(--color-brand-light);
   color: var(--color-accent);
   font-weight: 700;
@@ -301,15 +314,17 @@ footer {
 
 .distance-form button {
   padding: 0.5rem 1rem;
-  background-color: var(--color-brand);
-  color: white;
+  background-color: var(--color-accent);
+  color: var(--color-bg);
   border: none;
   border-radius: var(--radius);
   cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .distance-form button:hover {
-  background-color: var(--color-accent);
+  background-color: var(--color-brand-light);
+  color: var(--color-accent);
 }
 
 #distanceResult {
@@ -324,6 +339,7 @@ footer {
 }
 
 .workspace {
+  --panel-height: 8rem;
   position: relative;
   max-width: 1200px;
 }
@@ -334,35 +350,135 @@ footer {
 }
 
 .hotspot {
-  position: absolute;
-  border:none;
+  display: block;
+  width: 0;
+  height: 0;
+  padding: 0;
+  border: none;
   background: transparent;
   cursor: pointer;
 }
 
 .hotspot-dot {
-  display: block;
-  border-radius: 50%;
-  background-color: var(--color-brand);
-  border: none;
-  cursor: pointer;
+  position: absolute;
+  top: var(--top);
+  left: var(--left);
   width: 20px;
   height: 20px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 2px solid var(--color-bg);
+  background-color: var(--color-brand);
+  transition: background-color 0.2s ease;
+}
+
+.hotspot:hover .hotspot-dot,
+.hotspot:focus .hotspot-dot {
+  background-color: var(--color-accent);
+}
+
+.hotspot:focus-visible {
+  outline: none;
+}
+
+.hotspot:focus-visible .hotspot-dot {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.hotspot-panel,
+.workspace-hint {
+  padding: calc(var(--space) / 2);
+  background-color: var(--color-brand-light);
+  color: var(--color-text);
+  border-radius: var(--radius);
+  text-align: left;
 }
 
 .hotspot-panel {
+  position: absolute;
+  top: var(--top);
+  left: var(--left);
+  margin-top: var(--space);
+  width: 200px;
   opacity: 0;
   visibility: hidden;
-  position: absolute;
-  transition: opacity 0.2s ease;
-  width: 200px;
-  background-color: var(--color-brand-light);
-  border-radius: var(--radius);
-  padding: 5px;
+  transition: opacity 0.2s ease, visibility 0.2s;
+  z-index: 1;
+}
+
+.hotspot-panel strong {
+  display: block;
 }
 
 .hotspot:hover .hotspot-panel,
 .hotspot:focus .hotspot-panel {
   opacity: 1;
   visibility: visible;
+}
+
+.workspace-hint {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .workspace {
+    margin-bottom: calc(var(--panel-height) + var(--space));
+  }
+
+  .hotspot-panel,
+  .workspace-hint {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: var(--panel-height);
+    margin: var(--space) 0 0;
+    box-sizing: border-box;
+    overflow: auto;
+  }
+
+  .workspace-hint {
+    display: block;
+  }
+
+  .workspace:has(.hotspot:hover, .hotspot:focus) .workspace-hint {
+    visibility: hidden;
+  }
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px 14px;
+  border: 1px solid var(--color-brand-light);
+  text-align: left;
+  white-space: nowrap;
+}
+
+th:first-child,
+td:first-child {
+  position: sticky;
+  left: 0;
+  background: var(--color-bg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
 }

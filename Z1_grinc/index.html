@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="sk">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Osobná vizitka Šimona Grinča, študenta aplikovanej informatiky na FEI STU so zameraním na modelovanie a simuláciu udalostných systémov.">
+    <meta name="description"
+        content="Osobná vizitka Šimona Grinča, študenta aplikovanej informatiky na FEI STU so zameraním na modelovanie a simuláciu udalostných systémov.">
 
     <meta property="og:title" content="Šimon Grinč — Profil">
     <meta property="og:description" content="Študent aplikovanej informatiky na FEI STU">
-    <meta property="og:image" content="">
+    <meta property="og:image" content="images/TisI.jpg">
     <meta property="og:type" content="website">
 
-    <link rel="icon" type="image/svg+xml" href="images/favicon.ico">
+    <link rel="icon" href="images/favicon.ico">
 
     <link rel="stylesheet" href="css/styles.css">
     <title>Profil — Šimon Grinč</title>
@@ -23,54 +25,61 @@
             <text class="monogram-text" x="30" y="30" text-anchor="middle" dominant-baseline="central">ŠG</text>
         </svg>
         <h1>Šimon Grinč</h1>
-        <p class="tagline">študent aplikovanej informatiky, zaujímajú ma webové technológie</p>
+        <p class="tagline">študent aplikovanej informatiky, zaujímajú ma aplikácie</p>
     </header>
-   <nav>
-      <div class="hamburger">
-        <img src="images/MenuICO.svg" alt="Menu" width="24" height="24">
-      </div>
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Domov</a></li>
-        <li><a href="pages/cv.html">Životopis</a></li>
-        <li><a href="pages/map.html">Mapa</a></li>
-        <li><a href="pages/schedule.html">Rozvrh</a></li>
-        <li><a href="pages/workspace.html">Prac. prostredie</a></li>
-      </ul>
+    <nav>
+        <button class="hamburger" type="button" aria-expanded="false" aria-controls="nav-links"
+            aria-label="Otvoriť menu">
+            <img src="images/MenuICO.svg" alt="" width="24" height="24">
+        </button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html" aria-current="page">Domov</a></li>
+            <li><a href="pages/cv.html">Životopis</a></li>
+            <li><a href="pages/map.html">Mapa</a></li>
+            <li><a href="pages/schedule.html">Rozvrh</a></li>
+            <li><a href="pages/workspace.html">Prac. prostredie</a></li>
+        </ul>
     </nav>
     <main>
-    <section class="about-me">
-        <img src="images/TisI.jpg" alt="Šimon Grinč, pred Slovenským Národným Divadlom" width="500" height="500" loading="lazy">
-        <div class="about-me-text">
-            <h2>Kto som</h2>
-            <p>Ahojte, volám sa Šimon Grinč a som študent Aplikovanej informatiky na FEI STU.</p>
-            <p>Mám zameranie Modelovanie a simulácia udalostných systémov, bavia ma projekty, kde sa niečo nové naučím.</p>
-            <p>Tento semester by som chcel dokončiť bakalárku a ďalší rok si nájsť prácu v odbore.</p>
-            <ul>
-                <li>Programujem v C#</li>
-                <li>Zaujíma ma funkčnosť</li>
-                <li>Nemám rád MatLab</li>
-            </ul>
-            <aside>
-                <blockquote><em>If you're gonna fail, fail upwards.</em></blockquote>
-            </aside>
-        </div>
-    </section>
-</main>
+        <section class="about-me">
+            <img src="images/TisI.jpg" alt="Šimon Grinč, pred Slovenským Národným Divadlom" width="500" height="500"
+                loading="lazy">
+            <div class="about-me-text">
+                <h2>Kto som</h2>
+                <p>Ahojte, volám sa Šimon Grinč a som študent Aplikovanej informatiky na FEI STU.</p>
+                <p>Mám zameranie Modelovanie a simulácia udalostných systémov, bavia ma projekty, kde sa niečo nové
+                    naučím.</p>
+                <p>Tento semester by som chcel dokončiť bakalárku a ďalší rok si nájsť prácu v odbore.</p>
+                <ul>
+                    <li>Programujem v C#</li>
+                    <li>Zaujíma ma funkčnosť</li>
+                    <li>Nemám rád MatLab</li>
+                </ul>
+                <aside>
+                    <blockquote><em>If you're gonna fail, fail upwards.</em></blockquote>
+                </aside>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <address>
-            Kontakt: <a href="mailto:xgrinc@stuba.sk">xgrinc@stuba.sk</a>
+            <p><a href="mailto:xgrinc@stuba.sk">xgrinc@stuba.sk</a></p>
+            <p><a href="tel:+421944441305">+421 944 441 305</a></p>
         </address>
 
         <p>2026 Šimon Grinč</p>
 
         <p>
-             Zdroje:
-            Mapové podklady © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> prispievatelia,
+            Zdroje:
+            Mapové podklady © <a href="https://www.openstreetmap.org/copyright" target="_blank"
+                rel="noopener noreferrer">OpenStreetMap</a> prispievatelia,
             knižnica <a href="https://leafletjs.com/" target="_blank" rel="noopener noreferrer">Leaflet</a>
+            Fotografie:vlastné
         </p>
     </footer>
 
     <script src="js/script.js"></script>
 </body>
+
 </html>

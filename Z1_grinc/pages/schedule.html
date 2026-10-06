@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="sk">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Kde sa nachádzam v prítomný moment">
 
     <meta property="og:title" content="Šimon Grinč — Rozvrh">
-    <meta property="og:description" content="Kde sa nachádzam v prítomný moment">
-    <meta property="og:image" content="">
+    <meta property="og:description" content="Kde sa nachádzam v pravé teraz">
+    <meta property="og:image" content="../images/TisI.jpg">
     <meta property="og:type" content="website">
 
-    <link rel="icon" type="image/svg+xml" href="../images/favicon.ico">
+    <link rel="icon" href="../images/favicon.ico">
 
     <link rel="stylesheet" href="../css/styles.css">
     <title>Rozvrh — Šimon Grinč</title>
@@ -23,38 +24,75 @@
             <text class="monogram-text" x="30" y="30" text-anchor="middle" dominant-baseline="central">ŠG</text>
         </svg>
         <h1>Šimon Grinč</h1>
-        <p class="tagline">študent aplikovanej informatiky, zaujímajú ma webové technológie</p>
+        <p class="tagline">študent aplikovanej informatiky, zaujímajú ma aplikácie</p>
     </header>
-   <nav>
-      <div class="hamburger">
-        <img src="../images/MenuICO.svg" alt="Menu" width="24" height="24">
-      </div>
-      <ul class="nav-links">
-        <li><a href="../index.html">Domov</a></li>
-        <li><a href="cv.html">Životopis</a></li>
-        <li><a href="map.html">Mapa</a></li>
-        <li><a href="schedule.html">Rozvrh</a></li>
-        <li><a href="workspace.html">Prac. prostredie</a></li>
-      </ul>
+    <nav>
+        <button class="hamburger" type="button" aria-expanded="false" aria-controls="nav-links"
+            aria-label="Otvoriť menu">
+            <img src="../images/MenuICO.svg" alt="" width="24" height="24">
+        </button>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="../index.html">Domov</a></li>
+            <li><a href="cv.html">Životopis</a></li>
+            <li><a href="map.html">Mapa</a></li>
+            <li><a href="schedule.html" aria-current="page">Rozvrh</a></li>
+            <li><a href="workspace.html">Prac. prostredie</a></li>
+        </ul>
     </nav>
     <main>
-        <!-- TU vloz obsah konkretnej podstranky -->
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="row">Deň v týždni</th>
+                        <th scope="col">7:00-7:50</th>
+                        <th scope="col">8:00-8:50</th>
+                        <th scope="col">9:00-9:50</th>
+                        <th scope="col">10:00-10:50</th>
+                        <th scope="col">11:00-11:50</th>
+                        <th scope="col">12:00-12:50</th>
+                        <th scope="col">13:00-13:50</th>
+                        <th scope="col">14:00-14:50</th>
+                        <th scope="col">15:00-15:50</th>
+                        <th scope="col">16:00-16:50</th>
+                        <th scope="col">17:00-17:50</th>
+                        <th scope="col">18:00-18:50</th>
+                        <th scope="col">19:00-19:50</th>
+                        <th scope="col">20:00-20:50</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Pondelok</th>
+                        <td colspan="2"></td>
+                        <td colspan="2">Operačné systémy</td>
+                        <td colspan="2">Webové technológie</td>
+                        <td colspan="2">Telesná kultúra</td>
+                        <td colspan="7"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </main>
 
     <footer>
         <address>
-            Kontakt: <a href="mailto:xgrinc@stuba.sk">xgrinc@stuba.sk</a>
+            <p><a href="mailto:xgrinc@stuba.sk">xgrinc@stuba.sk</a></p>
+            <p><a href="tel:+421944441305">+421 944 441 305</a></p>
         </address>
 
         <p>2026 Šimon Grinč</p>
 
         <p>
-             Zdroje:
-            Mapové podklady © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> prispievatelia,
+            Zdroje:
+            Mapové podklady © <a href="https://www.openstreetmap.org/copyright" target="_blank"
+                rel="noopener noreferrer">OpenStreetMap</a> prispievatelia,
             knižnica <a href="https://leafletjs.com/" target="_blank" rel="noopener noreferrer">Leaflet</a>
+            Fotografie:vlastné
         </p>
     </footer>
 
     <script src="../js/script.js"></script>
 </body>
+
 </html>

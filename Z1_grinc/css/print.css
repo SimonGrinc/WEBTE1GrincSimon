@@ -21,7 +21,7 @@
     padding: 0.5rem 0;
   }
 
-  .cv-col--left {
+  .cv-col-left {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -34,16 +34,15 @@
   }
 
   .skills li {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid var(--color-brand-light);
   }
 
   .skills-level {
-    color: black;
     font-weight: bold;
   }
 
   * {
-    color: black !important;
+    color: var(--color-text) !important;
     box-shadow: none !important;
     text-shadow: none !important;
   }
