@@ -4,10 +4,15 @@
 
 :root {
   --color-brand: #4287f5;      
-  --color-brand-light: lightblue; 
+  --color-brand-light: #add8e6; 
   --color-accent: #1f5a8a;     
   --color-text: black;
   --color-bg: white;
+  --color-row-alt: #eef4fb;
+  --color-head-alt: #ADBBE6;
+  --color-lecture: #c9d8ff;
+  --color-exercise: #c8ecd3;
+  --color-sport: #ffd9b3;
 
   --radius: 0.5rem;
   --space: 1rem;
@@ -37,6 +42,25 @@
 :focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: var(--space);
+  z-index: 1000;
+  padding: calc(var(--space) / 2) var(--space);
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+  border-radius: 0 0 var(--radius) var(--radius);
+  text-decoration: none;
+  font-weight: bold;
+  transform: translateY(-100%);
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
 }
 
 body {
@@ -124,7 +148,7 @@ nav{
   color: var(--color-accent);
 }
 
-.nav-links a[aria-current="page"] {
+.nav-links a[aria-current="page"], .schedule-filter button[aria-pressed="true"] {
   background-color: var(--color-brand-light);
   color: var(--color-accent);
   font-weight: 700;
@@ -193,6 +217,10 @@ footer {
   width: 280px;
   margin-right: 2rem;
   margin-bottom: 1rem;
+}
+
+blockquote{
+  font-size: larger;
 }
 
 @media screen and (max-width: 768px) {
@@ -281,7 +309,7 @@ footer {
   margin-block: 1rem;
 }
 
-.map-empty {
+.map-empty, .schedule-message {
   padding: 1rem;
   background-color: var(--color-brand-light);
   border-radius: var(--radius);
@@ -312,7 +340,7 @@ footer {
   margin-top: 0.25rem;
 }
 
-.distance-form button {
+.distance-form button, .schedule-filter button{
   padding: 0.5rem 1rem;
   background-color: var(--color-accent);
   color: var(--color-bg);
@@ -320,9 +348,10 @@ footer {
   border-radius: var(--radius);
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease;
+  font: inherit;
 }
 
-.distance-form button:hover {
+.distance-form button:hover, .schedule-filter button:hover {
   background-color: var(--color-brand-light);
   color: var(--color-accent);
 }
@@ -450,6 +479,7 @@ footer {
 .table-wrapper {
   width: 100%;
   overflow-x: auto;
+  margin-block: 10px;
 }
 
 table {
@@ -460,7 +490,7 @@ table {
 
 th, td {
   padding: 10px 14px;
-  border: 1px solid var(--color-brand-light);
+  border: 1px solid var(--color-accent);
   text-align: left;
   white-space: nowrap;
 }
@@ -469,7 +499,17 @@ th:first-child,
 td:first-child {
   position: sticky;
   left: 0;
-  background: var(--color-bg);
+  background-color: var(--color-bg);
+}
+
+tbody tr:nth-of-type(even),
+tbody tr:nth-of-type(even) > :first-child {
+  background-color: var(--color-row-alt);
+}
+
+thead th,
+thead th:first-child {
+  background-color: var(--color-head-alt);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -480,5 +520,43 @@ td:first-child {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
+  }
+}
+
+.lecture {
+  background-color: var(--color-lecture);
+}
+
+.lab,
+.seminar {
+  background-color: var(--color-exercise);
+}
+
+.sport {
+  background-color: var(--color-sport);
+}
+
+.is-hidden {
+  background-color: transparent;
+  visibility: hidden;
+}
+
+.is-current {
+  outline:solid 3px var(--color-accent);
+  outline-offset: -3px;
+  font-weight: bold;
+  filter: brightness(0.85);
+}
+
+.schedule-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space);
+  margin-block: var(--space);
+}
+
+@media screen and (max-width: 768px) {
+  table{
+    font-size: small;
   }
 }
