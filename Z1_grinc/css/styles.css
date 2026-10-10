@@ -75,11 +75,11 @@ main {
 }
 
 h1 {
-  font-size: clamp(1.25rem, 5rem, 2rem);
+  font-size: clamp(1.25rem, 5vw, 2rem);
 }
 
 .tagline {
-  font-size: clamp(0.75rem, 2.5rem, 1rem);
+  font-size: clamp(0.75rem, 2.5vw, 1rem);
 }
 
 .monogram-bg {
@@ -535,18 +535,18 @@ thead th:first-child {
   background-color: var(--color-sport);
 }
 
-.is-hidden {
-  background-color: transparent;
-  color:transparent;
-  outline:none;
-  filter:none;
-}
-
 .is-current {
   outline:solid 3px var(--color-accent);
   outline-offset: -3px;
   font-weight: bold;
   filter: brightness(0.85);
+}
+
+.is-hidden {
+  background-color: transparent;
+  color:transparent;
+  outline:none;
+  filter:none;
 }
 
 .schedule-filter {
