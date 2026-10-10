@@ -1,7 +1,6 @@
 const SEMESTER_START = new Date(2026, 8, 14);
 const SEMESTER_END = new Date(2026, 11, 14);
 
-
 const menuButton = document.querySelector(".hamburger");
 const navLinks = document.querySelector(".nav-links");
 

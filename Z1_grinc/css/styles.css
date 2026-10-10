@@ -75,11 +75,11 @@ main {
 }
 
 h1 {
-  font-size: clamp(1.25rem, 5vw, 2rem);
+  font-size: clamp(1.25rem, 5rem, 2rem);
 }
 
 .tagline {
-  font-size: clamp(0.75rem, 2.5vw, 1rem);
+  font-size: clamp(0.75rem, 2.5rem, 1rem);
 }
 
 .monogram-bg {
@@ -98,7 +98,7 @@ h1 {
   flex-shrink: 0; 
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   .monogram {
     width: 70px;
     height: 70px;
@@ -184,7 +184,7 @@ nav{
 }
 
 ul{
-    list-style-type: none;
+  list-style-type: none;
 }
 
 .about-me ul{
@@ -495,8 +495,7 @@ th, td {
   white-space: nowrap;
 }
 
-th:first-child,
-td:first-child {
+th:first-child {
   position: sticky;
   left: 0;
   background-color: var(--color-bg);
@@ -538,7 +537,9 @@ thead th:first-child {
 
 .is-hidden {
   background-color: transparent;
-  visibility: hidden;
+  color:transparent;
+  outline:none;
+  filter:none;
 }
 
 .is-current {
