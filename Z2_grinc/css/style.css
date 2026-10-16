@@ -1,0 +1,108 @@
+:root {
+    --color-accent: #ed6a5a;        /* coral – borders, icons, decoration */
+    --color-primary: #c44536;       /* darker coral – buttons, active day, prices */
+    --color-primary-hover: #a8382c;
+    --color-dark: #5d576b;          /* taupe – navbar, footer, text */
+    --color-bg: #e6ebe0;            /* soft linen – page background */
+    --color-card: #ffffff;          /* restaurant cards */
+    --color-soup: #f4f1bb;          /* lemon chiffon – soup background */
+    --color-subtle: #9bc1bc;        /* ash grey – borders, dividers */
+
+    --bs-body-bg: var(--color-bg);
+    --bs-body-color: var(--color-dark);
+    --bs-link-color: var(--color-primary);
+    --bs-link-hover-color: var(--color-primary-hover);
+    --bs-link-color-rgb: 196, 69, 54;
+    --bs-link-hover-color-rgb: 168, 56, 44;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url(../fonts/poppins/Poppins-Regular.woff2) format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url(../fonts/poppins/Poppins-Bold.woff2) format("woff2");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url(../fonts/poppins/Poppins-Italic.woff2) format("woff2");
+  font-weight: normal;
+  font-style: italic;
+}
+
+*{
+    font-family: "Poppins", sans-serif;
+}
+
+.navbar-custom{
+    background-color: var(--color-dark);
+}
+
+.btn-primary {
+    --bs-btn-bg: var(--color-primary);
+    --bs-btn-border-color: var(--color-primary);
+    --bs-btn-hover-bg: var(--color-primary-hover);
+    --bs-btn-hover-border-color: var(--color-primary-hover);
+    --bs-btn-active-bg: var(--color-primary-hover);
+    --bs-btn-active-border-color: var(--color-primary-hover);
+    --bs-btn-disabled-bg: var(--color-primary);
+    --bs-btn-disabled-border-color: var(--color-primary);
+    --bs-btn-focus-shadow-rgb: 196, 69, 54;
+}
+
+.btn-outline-secondary {
+    --bs-btn-color: var(--color-dark);
+    --bs-btn-border-color: var(--color-dark);
+    --bs-btn-hover-bg: var(--color-dark);
+    --bs-btn-hover-border-color: var(--color-dark);
+    --bs-btn-active-bg: var(--color-dark);
+    --bs-btn-active-border-color: var(--color-dark);
+    --bs-btn-focus-shadow-rgb: 93, 87, 107;
+}
+
+.form-check-input:checked {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.form-check-input:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 0.25rem rgba(196, 69, 54, 0.25);
+}
+
+.day-picker .btn {
+    --bs-btn-bg: var(--color-card);
+    --bs-btn-color: var(--color-dark);
+    --bs-btn-border-color: var(--color-subtle);
+    --bs-btn-hover-bg: var(--color-card);
+    --bs-btn-hover-color: var(--color-primary);
+    --bs-btn-hover-border-color: var(--color-accent);
+    --bs-btn-active-bg: var(--color-primary);
+    --bs-btn-active-border-color: var(--color-primary);
+    --bs-btn-focus-shadow-rgb: 196, 69, 54;
+    --bs-btn-border-radius: 0.75rem;
+    --bs-btn-padding-x: 1.2rem;
+    --bs-btn-padding-y: 0.6rem;
+    --bs-btn-font-weight: 600;
+
+    box-shadow: 0 2px 6px rgba(93, 87, 107, 0.12);
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.day-picker .btn-check:not(:checked) + .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(93, 87, 107, 0.18);
+}
+
+.loading .spinner-border {
+    color: var(--color-primary);
+    width: 3rem;
+    height: 3rem;
+}
