@@ -14,6 +14,8 @@
     --bs-link-hover-color: var(--color-primary-hover);
     --bs-link-color-rgb: 196, 69, 54;
     --bs-link-hover-color-rgb: 168, 56, 44;
+
+    --bs-body-font-family: "Poppins", sans-serif;
 }
 
 @font-face {
@@ -35,10 +37,6 @@
   src: url(../fonts/poppins/Poppins-Italic.woff2) format("woff2");
   font-weight: normal;
   font-style: italic;
-}
-
-*{
-    font-family: "Poppins", sans-serif;
 }
 
 .navbar-custom{
@@ -74,7 +72,7 @@
 
 .form-check-input:focus {
     border-color: var(--color-accent);
-    box-shadow: 0 0 0 0.25rem rgba(196, 69, 54, 0.25);
+    box-shadow: 0 0 0 0.25rem #c4453640;
 }
 
 .day-picker .btn {
@@ -92,17 +90,107 @@
     --bs-btn-padding-y: 0.6rem;
     --bs-btn-font-weight: 600;
 
-    box-shadow: 0 2px 6px rgba(93, 87, 107, 0.12);
+    box-shadow: 0 2px 6px #5d576b1f;
     transition: transform 0.15s, box-shadow 0.15s;
 }
 
 .day-picker .btn-check:not(:checked) + .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(93, 87, 107, 0.18);
+    box-shadow: 0 4px 10px #5d576b2e;
 }
 
 .loading .spinner-border {
     color: var(--color-primary);
     width: 3rem;
     height: 3rem;
+}
+
+.restaurant-card {
+    border: 1px solid var(--color-subtle);
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 8px #5d576b1a;
+}
+
+.restaurant-card .card-header {
+    background-color: var(--color-card);
+    border-bottom: 3px solid var(--color-accent);
+}
+
+.restaurant-card .updated {
+    opacity: 0.8;
+}
+
+.day-heading {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 1rem 0 0.5rem;
+}
+
+.dish {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.6rem 0.75rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.4rem;
+}
+
+.dish-soup {
+    background-color: var(--color-soup);
+}
+
+.dish-main {
+    border-left: 4px solid var(--color-accent);
+}
+
+.dish-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.dish-type {
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.75;
+}
+
+.dish-name {
+    font-weight: bold;
+}
+
+.dish-details {
+    opacity: 0.8;
+}
+
+.price {
+    font-weight: bold;
+    color: var(--color-primary);
+    white-space: nowrap;
+    text-align: right;
+}
+
+.price-student {
+    display: block;
+}
+
+.no-menu {
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.control-panel {
+    background-color: var(--color-card);
+    border: 1px solid var(--color-subtle);
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 8px #5d576b1a;
+    padding: 1rem;
+}
+
+.site-footer {
+    background-color: var(--color-dark);
+    color: #fff;
+    --bs-link-color-rgb: 244, 241, 187;
+    --bs-link-hover-color-rgb: 255, 255, 255;
 }
