@@ -52,7 +52,6 @@ const visibleRestaurants = new Set(RESTAURANTS.map(r => r.id));
 
 const DAY_NAMES = ["Nedeľa", "Pondelok", "Utorok", "Streda", "Štvrtok", "Piatok", "Sobota"];
 
-// ===== Formatting =====
 function formatPrice(price) {
     return price.toFixed(2).replace(".", ",") + " €";
 }
@@ -107,6 +106,7 @@ async function loadAll() {
     };
 
     saveData();
+    render();
 
     $("#loading").addClass("d-none");
     $("#refresh-btn").prop("disabled", false);
@@ -182,7 +182,6 @@ function renderCard(restaurant) {
     const $col = $("<div>").addClass("col-12 col-lg-4");
     const $card = $("<article>").addClass("card restaurant-card h-100");
 
-    // Header: name with link, address, last update
     const $header = $("<header>").addClass("card-header");
     const $link = $("<a>")
         .attr({ href: restaurant.url, target: "_blank", rel: "noopener noreferrer" })
@@ -195,7 +194,6 @@ function renderCard(restaurant) {
         $header.append($("<p>").addClass("small mb-0 updated").append("Aktualizované: ", $time));
     }
 
-    // Body
     const $body = $("<div>").addClass("card-body");
 
     if (data && data.error) {
