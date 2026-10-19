@@ -90,13 +90,11 @@
     --bs-btn-padding-y: 0.6rem;
     --bs-btn-font-weight: 600;
 
-    box-shadow: 0 2px 6px #5d576b1f;
     transition: transform 0.15s, box-shadow 0.15s;
 }
 
 .day-picker .btn-check:not(:checked) + .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px #5d576b2e;
 }
 
 .loading .spinner-border {
@@ -108,7 +106,6 @@
 .restaurant-card {
     border: 1px solid var(--color-subtle);
     border-radius: 0.75rem;
-    box-shadow: 0 2px 8px #5d576b1a;
 }
 
 .restaurant-card .card-header {
@@ -140,7 +137,7 @@
 }
 
 .dish-main {
-    border-left: 4px solid var(--color-accent);
+    background-color:var(--color-card);
 }
 
 .dish-info {
@@ -184,7 +181,6 @@
     background-color: var(--color-card);
     border: 1px solid var(--color-subtle);
     border-radius: 0.75rem;
-    box-shadow: 0 2px 8px #5d576b1a;
     padding: 1rem;
 }
 
