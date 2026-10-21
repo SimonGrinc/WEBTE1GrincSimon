@@ -87,11 +87,12 @@
     --bs-btn-border-radius: 0.75rem;
     --bs-btn-padding-x: 1.2rem;
     --bs-btn-padding-y: 0.6rem;
-    --bs-btn-font-weight: 600;
+    --bs-btn-font-weight: bold;
 }
 
 .day-picker .btn-check:not(:checked) + .btn:hover {
     transform: translateY(-2px);
+    transition: transform 0.15s;
 }
 
 .loading .spinner-border {
@@ -186,4 +187,16 @@
     color: #fff;
     --bs-link-color-rgb: 244, 241, 187;
     --bs-link-hover-color-rgb: 255, 255, 255;
+}
+
+.about-section {
+    background-color: var(--color-card);
+    border: 1px solid var(--color-subtle);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.source-list li {
+    padding: 0.75rem 0;
 }
