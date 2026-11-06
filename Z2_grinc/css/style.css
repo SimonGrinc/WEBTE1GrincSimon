@@ -1,3 +1,7 @@
+/* =========================
+   Paleta farieb a prepísanie premenných Bootstrapu
+   (style.css sa načítava po Bootstrape, preto jeho hodnoty prepíše)
+   ========================= */
 :root {
     --color-accent: #ed6a5a;        /* coral – borders, icons, decoration */
     --color-primary: #c44536;       /* darker coral – buttons, active day, prices */
@@ -8,16 +12,23 @@
     --color-soup: #f4f1bb;          /* lemon chiffon – soup background */
     --color-subtle: #9bc1bc;        /* ash grey – borders, dividers */
 
+    /* Pozadie a farba textu stránky */
     --bs-body-bg: var(--color-bg);
     --bs-body-color: var(--color-dark);
+    /* Farba odkazov – Bootstrap komponenty používajú tieto premenné */
     --bs-link-color: var(--color-primary);
     --bs-link-hover-color: var(--color-primary-hover);
+    /* Bežné odkazy berú farbu z -rgb premenných (tri čísla, nie hex) */
     --bs-link-color-rgb: 196, 69, 54;
     --bs-link-hover-color-rgb: 168, 56, 44;
 
+    /* Písmo celej stránky */
     --bs-body-font-family: "Poppins", sans-serif;
 }
 
+/* =========================
+   Font Poppins – lokálne súbory .woff2 (licencia SIL OFL)
+   ========================= */
 @font-face {
   font-family: "Poppins";
   src: url(../fonts/poppins/Poppins-Regular.woff2) format("woff2");
@@ -39,10 +50,18 @@
   font-style: italic;
 }
 
+/* =========================
+   Navbar
+   ========================= */
 .navbar-custom{
     background-color: var(--color-dark);
 }
 
+/* =========================
+   Tlačidlá – farby cez premenné --bs-btn-*
+   ========================= */
+
+/* Hlavné tlačidlo (Aktualizovať menu) */
 .btn-primary {
     --bs-btn-bg: var(--color-primary);
     --bs-btn-border-color: var(--color-primary);
@@ -50,11 +69,14 @@
     --bs-btn-hover-border-color: var(--color-primary-hover);
     --bs-btn-active-bg: var(--color-primary-hover);
     --bs-btn-active-border-color: var(--color-primary-hover);
+    /* Vypnuté počas načítavania – inak by bolo modré */
     --bs-btn-disabled-bg: var(--color-primary);
     --bs-btn-disabled-border-color: var(--color-primary);
+    /* Farba obrysu pri fokuse klávesnicou (RGB bez rgb()) */
     --bs-btn-focus-shadow-rgb: 196, 69, 54;
 }
 
+/* Vedľajšie tlačidlo (Vymazať uložené dáta) */
 .btn-outline-secondary {
     --bs-btn-color: var(--color-dark);
     --bs-btn-border-color: var(--color-dark);
@@ -65,6 +87,9 @@
     --bs-btn-focus-shadow-rgb: 93, 87, 107;
 }
 
+/* =========================
+   Formulárové prvky (prepínač, checkboxy filtra)
+   ========================= */
 .form-check-input:checked {
     background-color: var(--color-primary);
     border-color: var(--color-primary);
@@ -74,6 +99,9 @@
     border-color: var(--color-accent);
 }
 
+/* =========================
+   Výber dňa – rádiá zobrazené ako tlačidlá-karty
+   ========================= */
 .day-picker .btn {
     --bs-btn-bg: var(--color-card);
     --bs-btn-color: var(--color-dark);
@@ -81,6 +109,7 @@
     --bs-btn-hover-bg: var(--color-card);
     --bs-btn-hover-color: var(--color-primary);
     --bs-btn-hover-border-color: var(--color-accent);
+    /* active = zaškrtnuté rádio (.btn-check:checked + .btn) */
     --bs-btn-active-bg: var(--color-primary);
     --bs-btn-active-border-color: var(--color-primary);
     --bs-btn-focus-shadow-rgb: 196, 69, 54;
@@ -90,17 +119,25 @@
     --bs-btn-font-weight: bold;
 }
 
+/* Nadvihnutie pri hoveri iba pre nezvolené dni */
 .day-picker .btn-check:not(:checked) + .btn:hover {
     transform: translateY(-2px);
     transition: transform 0.15s;
 }
 
+/* =========================
+   Indikátor načítania
+   ========================= */
 .loading .spinner-border {
+    /* Krúžok sa kreslí farbou textu */
     color: var(--color-primary);
     width: 3rem;
     height: 3rem;
 }
 
+/* =========================
+   Karty reštaurácií
+   ========================= */
 .restaurant-card {
     border: 1px solid var(--color-subtle);
     border-radius: 0.75rem;
@@ -111,16 +148,23 @@
     border-bottom: 3px solid var(--color-accent);
 }
 
+/* Čas aktualizácie – menej výrazný */
 .restaurant-card .updated {
     opacity: 0.8;
 }
 
+/* Nadpis dňa v režime „Celý týždeň“ */
 .day-heading {
     font-size: 1rem;
     font-weight: bold;
     margin: 1rem 0 0.5rem;
 }
 
+/* =========================
+   Jedlá – polievky, hlavné jedlá a ceny graficky odlíšené
+   ========================= */
+
+/* Jedno jedlo: info vľavo, cena vpravo */
 .dish {
     display: flex;
     justify-content: space-between;
@@ -138,6 +182,7 @@
     background-color:var(--color-card);
 }
 
+/* Typ, názov a detaily pod sebou */
 .dish-info {
     display: flex;
     flex-direction: column;
@@ -162,19 +207,25 @@
 .price {
     font-weight: bold;
     color: var(--color-primary);
+    /* Cena sa nezalomí na dva riadky */
     white-space: nowrap;
     text-align: right;
 }
 
+/* Študentská cena na novom riadku */
 .price-student {
     display: block;
 }
 
+/* Hlásenie, že menu nie je k dispozícii */
 .no-menu {
     font-style: italic;
     opacity: 0.8;
 }
 
+/* =========================
+   Ovládací panel
+   ========================= */
 .control-panel {
     background-color: var(--color-card);
     border: 1px solid var(--color-subtle);
@@ -182,6 +233,9 @@
     padding: 1rem;
 }
 
+/* =========================
+   Footer – premenné odkazov platia iba vnútri footra
+   ========================= */
 .site-footer {
     background-color: var(--color-dark);
     color: #fff;
@@ -189,6 +243,9 @@
     --bs-link-hover-color-rgb: 255, 255, 255;
 }
 
+/* =========================
+   Stránka O projekte
+   ========================= */
 .about-section {
     background-color: var(--color-card);
     border: 1px solid var(--color-subtle);

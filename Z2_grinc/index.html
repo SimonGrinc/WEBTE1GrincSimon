@@ -6,24 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Papaníčko</title>
     <link rel="icon" href="logo.ico">
+    <!-- Bootstrap CSS a ikony; vlastné štýly až za nimi, aby ich mohli prepísať -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
+<!-- d-flex flex-column min-vh-100 + flex-grow-1 na main: footer je vždy dole -->
 <body class="d-flex flex-column min-vh-100">
     <header>
+        <!-- Navigácia: od md vodorovne, na menších obrazovkách hamburger -->
         <nav class="navbar navbar-expand-md navbar-custom" data-bs-theme="dark">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
                     <img src="logo.ico" alt="" width="32" height="32">
                     Papaníčko
                 </a>
+                <!-- Hamburger: Bootstrap JS prepína triedu show na #hlavneMenu -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#hlavneMenu"
                     aria-controls="hlavneMenu" aria-expanded="false" aria-label="Prepnúť navigáciu">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="hlavneMenu">
+                    <!-- Navigácia ako nečíslovaný zoznam -->
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="index.html">Menu</a>
@@ -38,6 +43,8 @@
     </header>
     <main class="container flex-grow-1">
         <h1>Obedy v okolí</h1>
+
+        <!-- Ovládací panel: aktualizácia, vymazanie dát, prepínač zdroja -->
         <section class="control-panel d-flex flex-wrap justify-content-center align-items-center gap-3 my-4"
             aria-labelledby="controls-heading">
             <h2 id="controls-heading" class="visually-hidden">Ovládanie</h2>
@@ -50,12 +57,16 @@
                 <i class="bi bi-trash" aria-hidden="true"></i> Vymazať uložené dáta
             </button>
 
+            <!-- Zapnutý = lokálne kópie, vypnutý = živé stránky cez proxy -->
             <div class="form-check form-switch mb-0">
                 <input class="form-check-input" type="checkbox" role="switch" id="source-switch" checked
                     autocomplete="off">
                 <label class="form-check-label" for="source-switch">Použiť lokálne kópie</label>
             </div>
         </section>
+
+        <!-- Výber dňa: rádiová skupina (vždy jeden zvolený), btn-check ju zobrazí ako tlačidlá.
+             Hodnoty 1 až 5 zodpovedajú Date.getDay(). -->
         <section class="my-4" aria-labelledby="day-picker-heading">
             <h2 id="day-picker-heading" class="visually-hidden">Výber dňa</h2>
             <fieldset class="day-picker d-flex flex-wrap justify-content-center gap-2" id="day-picker">
@@ -80,20 +91,25 @@
                 <label class="btn btn-outline-primary" for="day-week">Celý týždeň</label>
             </fieldset>
         </section>
+
+        <!-- Filter reštaurácií: checkboxy vygeneruje JavaScript z konfigurácie -->
         <section aria-labelledby="filter-heading">
             <h2 id="filter-heading" class="visually-hidden">Filter reštaurácií</h2>
             <div id="restaurant-filter" class="d-flex flex-wrap justify-content-center gap-3 my-4"></div>
         </section>
 
+        <!-- Oznam cez víkend; JavaScript odoberie d-none v sobotu a nedeľu -->
         <div id="weekend-notice" class="alert alert-info text-center d-none" role="status">
             Cez víkend sa denné menu nepodáva. Zobrazuje sa menu z tohto týždňa.
         </div>
 
+        <!-- Indikátor načítania; zobrazuje sa iba počas načítavania -->
         <div id="loading" class="loading text-center my-5 d-none">
             <div class="spinner-border" aria-hidden="true"></div>
             <p role="status" class="mt-2">Načítavam menu…</p>
         </div>
 
+        <!-- Karty reštaurácií vykreslí JavaScript (stĺpce Bootstrap gridu) -->
         <section aria-labelledby="menu-heading">
             <h2 id="menu-heading" class="visually-hidden">Denné menu</h2>
             <div id="menu-container" class="row g-4"></div>
@@ -102,6 +118,7 @@
 
     <footer class="site-footer mt-5 py-4">
         <div class="container">
+            <!-- Tri stĺpce od md, na mobile pod sebou -->
             <div class="row g-4">
                 <section class="col-md-4" aria-labelledby="footer-contact">
                     <h2 id="footer-contact" class="h6">Kontakt</h2>
@@ -124,6 +141,7 @@
                     </ul>
                 </section>
 
+                <!-- Použité knižnice (požiadavka zadania) -->
                 <section class="col-md-4" aria-labelledby="footer-libs">
                     <h2 id="footer-libs" class="h6">Použité knižnice</h2>
                     <ul class="list-unstyled mb-0">
@@ -140,6 +158,8 @@
         </div>
     </footer>
 
+    <!-- Skripty na konci body: DOM je už načítaný. Poradie je dôležité:
+         jQuery, Bootstrap (hamburger), parsery, aplikácia (používa parsery aj jQuery) -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/parsers.js"></script>
