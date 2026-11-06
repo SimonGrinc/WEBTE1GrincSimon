@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<!-- workspace.html – fotka pracovného stola s interaktívnymi bodmi.
+     Body (hotspoty) vytvára js/workspace.js. -->
 <html lang="sk">
 
 <head>
@@ -6,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Prostredie kde pracujem">
 
+    <!-- Open Graph náhľad pri zdieľaní (tu s fotkou stola) -->
     <meta property="og:title" content="Šimon Grinč — Prac. prostredie">
     <meta property="og:description" content="Prostredie kde pracujem">
     <meta property="og:image" content="https://webte1.fei.stuba.sk/~xgrinc/Z1_grinc/images/workspace.jpg">
@@ -37,13 +40,17 @@
             <li><a href="cv.html">Životopis</a></li>
             <li><a href="map.html">Mapa</a></li>
             <li><a href="schedule.html">Rozvrh</a></li>
+            <!-- Aktuálna stránka -->
             <li><a href="workspace.html" aria-current="page">Prac. prostredie</a></li>
         </ul>
     </nav>
     <main id="main-content">
         <h2>Moje pracovné prostredie</h2>
+        <!-- Kontajner s position: relative – workspace.js doňho pridá
+             tlačidlá s bodmi, ktoré sa umiestnia absolútne nad obrázok -->
         <div class="workspace">
             <img src="../images/workspace.jpg" alt="Môj pracovný stôl" width="500" height="300">
+            <!-- Nápoveda viditeľná len na mobile (CSS media query) -->
             <p class="workspace-hint">Ťukni na modrý bod na obrázku a zobrazí sa tu jeho popis.</p>
         </div>
     </main>
@@ -65,6 +72,7 @@
         </p>
     </footer>
 
+    <!-- Spoločný skript (menu) a skript pre hotspoty -->
     <script src="../js/script.js"></script>
     <script src="../js/workspace.js"></script>
 </body>

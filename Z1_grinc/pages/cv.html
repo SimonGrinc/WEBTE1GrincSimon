@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<!-- cv.html – životopis. Leží v priečinku pages/, preto cesty
+     k CSS, JS a obrázkom začínajú "../". Spoločné časti (hlavička,
+     navigácia, pätička) sú rovnaké ako v index.html. -->
 <html lang="sk">
 
 <head>
@@ -6,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Moje zručnosti a vzdelanie">
 
+    <!-- Open Graph náhľad pri zdieľaní -->
     <meta property="og:title" content="Šimon Grinč — Životopis">
     <meta property="og:description" content="Moje zručnosti a vzdelanie">
     <meta property="og:image" content="https://webte1.fei.stuba.sk/~xgrinc/Z1_grinc/images/TisI.jpg">
@@ -14,6 +18,7 @@
     <link rel="icon" href="../images/favicon.ico">
 
     <link rel="stylesheet" href="../css/styles.css">
+    <!-- Tlačové štýly – načítajú sa iba pri tlači (media="print") -->
     <link rel="stylesheet" href="../css/print.css" media="print">
 
     <title>Životopis — Šimon Grinč</title>
@@ -36,6 +41,7 @@
         </button>
         <ul class="nav-links" id="nav-links">
             <li><a href="../index.html">Domov</a></li>
+            <!-- Aktuálna stránka -->
             <li><a href="cv.html" aria-current="page">Životopis</a></li>
             <li><a href="map.html">Mapa</a></li>
             <li><a href="schedule.html">Rozvrh</a></li>
@@ -43,7 +49,9 @@
         </ul>
     </nav>
     <main id="main-content">
+        <!-- Dvojstĺpcové rozloženie (flex v CSS) -->
         <section class="cv">
+            <!-- Ľavý stĺpec: fotka a kontakt -->
             <div class="cv-col cv-col-left">
                 <img src="../images/TisI.jpg" alt="Šimon Grinč" width="300" height="300" loading="lazy">
                 <address>
@@ -52,8 +60,10 @@
                 </address>
             </div>
 
+            <!-- Pravý stĺpec: vzdelanie a zručnosti -->
             <div class="cv-col cv-col-right">
                 <h2>Vzdelanie</h2>
+                <!-- article = samostatný celok (jedna škola) -->
                 <article>
                     <h3>Bc. Aplikovaná informatika</h3>
                     <p>Fakulta elektrotechniky a informatiky STU, 2024 – doteraz</p>
@@ -66,12 +76,14 @@
                 </article>
 
                 <h2>Počítačové zručnosti</h2>
+                <!-- Každá položka: názov vľavo, úroveň vpravo (flex, space-between) -->
                 <ul class="skills">
                     <li><span class="skills-name">Python</span><span class="skills-level">Začiatočník</span></li>
                     <li><span class="skills-name">C</span><span class="skills-level">Začiatočník</span></li>
                     <li><span class="skills-name">Java</span><span class="skills-level">Začiatočník</span></li>
                     <li><span class="skills-name">C++</span><span class="skills-level">Začiatočník</span></li>
                     <li><span class="skills-name">C#</span><span class="skills-level">Začiatočník</span></li>
+                    <!-- &amp; = znak "&" zapísaný ako HTML entita -->
                     <li><span class="skills-name">HTML &amp; CSS</span><span class="skills-level">Začiatočník</span></li>
                     <li><span class="skills-name">MySQL</span><span class="skills-level">Začiatočník</span></li>
                     <li><span class="skills-name">R</span><span class="skills-level">Začiatočník</span></li>
@@ -93,6 +105,7 @@
         </section>
     </main>
 
+    <!-- Pätička (pri tlači skrytá v print.css) -->
     <footer>
         <address>
             <p><a href="mailto:xgrinc@stuba.sk">xgrinc@stuba.sk</a></p>
@@ -110,6 +123,7 @@
         </p>
     </footer>
 
+    <!-- Spoločný skript (hamburger menu) -->
     <script src="../js/script.js"></script>
 </body>
 

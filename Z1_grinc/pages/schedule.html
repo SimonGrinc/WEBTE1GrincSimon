@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<!-- schedule.html – rozvrh hodín s filtrom, zvýraznením aktuálnej
+     hodiny a priebehom semestra. Logika je v js/script.js. -->
 <html lang="sk">
 
 <head>
@@ -6,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Kedy ma zastihnete – môj rozvrh a aktuálna hodina">
 
+    <!-- Open Graph náhľad pri zdieľaní -->
     <meta property="og:title" content="Šimon Grinč — Rozvrh">
     <meta property="og:description" content="Kedy ma zastihnete – môj rozvrh a aktuálna hodina">
     <meta property="og:image" content="https://webte1.fei.stuba.sk/~xgrinc/Z1_grinc/images/TisI.jpg">
@@ -36,22 +39,32 @@
             <li><a href="../index.html">Domov</a></li>
             <li><a href="cv.html">Životopis</a></li>
             <li><a href="map.html">Mapa</a></li>
+            <!-- Aktuálna stránka -->
             <li><a href="schedule.html" aria-current="page">Rozvrh</a></li>
             <li><a href="workspace.html">Prac. prostredie</a></li>
         </ul>
     </nav>
     <main id="main-content">
         <h2>Kedy mám čas</h2>
+
+        <!-- Filter: role="group" + aria-label zoskupí tlačidlá pre čítačky.
+             aria-pressed = prepínacie tlačidlo (zapnuté/vypnuté).
+             data-filter = názov CSS triedy, podľa ktorej sa filtruje. -->
         <div class="schedule-filter" role="group" aria-label="Filter rozvrhu">
             <button type="button" aria-pressed="true" data-filter="all">Všetko</button>
             <button type="button" aria-pressed="false" data-filter="lecture">Prednášky</button>
             <button type="button" aria-pressed="false" data-filter="exercise">Cvičenia</button>
         </div>
+
+        <!-- Hláška pre prázdny výsledok filtra (zobrazuje script.js) -->
         <p id="filterEmpty" class="schedule-message" hidden>Pre tento filter nemám v rozvrhu žiadne hodiny.</p>
+
+        <!-- Obal umožňuje vodorovné posúvanie tabuľky na mobile -->
         <div class="table-wrapper">
             <table>
                 <thead>
                     <tr>
+                        <!-- scope="col" = hlavička stĺpca (prístupnosť tabuľky) -->
                         <th scope="col">Deň v týždni</th>
                         <th scope="col">7:00-7:50</th>
                         <th scope="col">8:00-8:50</th>
@@ -69,8 +82,15 @@
                         <th scope="col">20:00-20:50</th>
                     </tr>
                 </thead>
+                <!-- Každý riadok má spolu 14 časových stĺpcov (súčet colspan).
+                     Bunky s hodinami nesú:
+                       class      – typ hodiny (lecture / exercise + lab / seminar / sport)
+                                    → farba v CSS a filtrovanie v JS
+                       data-day   – deň v týždni (1 = pondelok, ako Date.getDay())
+                       data-start / data-end – čas začiatku a konca hodiny -->
                 <tbody>
                     <tr>
+                        <!-- scope="row" = hlavička riadku -->
                         <th scope="row">Pondelok</th>
                         <td colspan="2"></td>
                         <td colspan="2" class="exercise lab" data-day="1" data-start="9:00" data-end="10:50">Operačné systémy</td>
@@ -104,17 +124,22 @@
                         <td colspan="10"></td>
                     </tr>
                     <tr>
+                        <!-- Piatok bez výučby – jedna prázdna bunka cez všetky stĺpce -->
                         <th scope="row">Piatok</th>
                         <td colspan="14"></td>
                     </tr>
                 </tbody>
             </table>
         </div>
+
+        <!-- Dynamický stav – text a hodnoty dopĺňa script.js -->
         <section class="schedule-status">
             <h2>Aktuálny stav</h2>
 
+            <!-- Text o aktuálnej / najbližšej hodine; aria-live oznámi zmenu čítačke -->
             <p id="currentLesson" class="schedule-message" aria-live="polite">Načítavam aktuálny stav rozvrhu…</p>
 
+            <!-- Ukazovateľ priebehu semestra (0–100 %) s popisom cez label -->
             <label for="semesterProgress">Uplynulá časť semestra:</label>
             <progress id="semesterProgress" max="100" value="0"></progress>
             <span id="semesterPercent">0 %</span>
@@ -138,6 +163,7 @@
         </p>
     </footer>
 
+    <!-- script.js obsahuje menu, filter, aktuálnu hodinu aj priebeh semestra -->
     <script src="../js/script.js"></script>
 </body>
 

@@ -1,39 +1,61 @@
 <!DOCTYPE html>
+<!-- index.html – úvodná stránka (profil). Leží v koreňovom priečinku,
+     preto cesty k súborom nemajú "../" a podstránky sú v "pages/". -->
+<!-- lang="sk" – jazyk stránky pre čítačky obrazovky, vyhľadávače a delenie slov -->
 <html lang="sk">
 
 <head>
+    <!-- Kódovanie UTF-8, aby sa správne zobrazila diakritika -->
     <meta charset="UTF-8">
+    <!-- Responzívnosť: šírka stránky = šírka zariadenia, bez počiatočného zoomu -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Popis stránky pre výsledky vyhľadávania -->
     <meta name="description"
         content="Osobná vizitka Šimona Grinča, študenta aplikovanej informatiky na FEI STU so zameraním na modelovanie a simuláciu udalostných systémov.">
 
+    <!-- Open Graph – náhľad pri zdieľaní odkazu (Facebook, Messenger, Discord...).
+         og:image musí byť absolútna URL. -->
     <meta property="og:title" content="Šimon Grinč — Profil">
     <meta property="og:description" content="Študent aplikovanej informatiky na FEI STU">
     <meta property="og:image" content="https://webte1.fei.stuba.sk/~xgrinc/Z1_grinc/images/TisI.jpg">
     <meta property="og:type" content="website">
 
+    <!-- Ikona v záložke prehliadača -->
     <link rel="icon" href="images/favicon.ico">
 
+    <!-- Spoločné štýly webu -->
     <link rel="stylesheet" href="css/styles.css">
     <title>Profil — Šimon Grinč</title>
 </head>
 
 <body>
+    <!-- Skrytý odkaz na preskočenie navigácie; zobrazí sa po stlačení Tab -->
     <a class="skip-link" href="#main-content">Preskočiť na obsah</a>
+
+    <!-- Hlavička: logo (monogram), meno a podnadpis -->
     <header>
+        <!-- Inline SVG logo; role="img" + aria-label = prístupný popis obrázka -->
         <svg class="monogram" viewBox="0 0 60 60" role="img" aria-label="Iniciály ŠG">
             <circle class="monogram-bg" cx="30" cy="30" r="28" />
+            <!-- text-anchor + dominant-baseline vycentrujú text vodorovne aj zvislo -->
             <text class="monogram-text" x="30" y="30" text-anchor="middle" dominant-baseline="central">ŠG</text>
         </svg>
         <h1>Šimon Grinč</h1>
         <p class="tagline">študent aplikovanej informatiky, zaujímajú ma aplikácie</p>
     </header>
+
+    <!-- Hlavná navigácia -->
     <nav>
+        <!-- Hamburger tlačidlo (viditeľné len na mobile).
+             aria-expanded = či je menu otvorené (mení script.js),
+             aria-controls = id prvku, ktorý tlačidlo ovláda. -->
         <button class="hamburger" type="button" aria-expanded="false" aria-controls="nav-links"
             aria-label="Otvoriť menu">
+            <!-- alt="" – ikona je dekoratívna, význam nesie aria-label tlačidla -->
             <img src="images/MenuICO.svg" alt="" width="24" height="24">
         </button>
         <ul class="nav-links" id="nav-links">
+            <!-- aria-current="page" označuje aktuálnu stránku (aj pre CSS zvýraznenie) -->
             <li><a href="index.html" aria-current="page">Domov</a></li>
             <li><a href="pages/cv.html">Životopis</a></li>
             <li><a href="pages/map.html">Mapa</a></li>
@@ -41,10 +63,15 @@
             <li><a href="pages/workspace.html">Prac. prostredie</a></li>
         </ul>
     </nav>
+
+    <!-- Hlavný obsah; id je cieľ skip-linku -->
     <main id="main-content">
         <section class="about-me">
+            <!-- width/height rezervujú miesto pred načítaním (žiadne „skákanie“ obsahu),
+                 loading="lazy" odloží načítanie obrázka -->
             <img src="images/TisI.jpg" alt="Šimon Grinč, pred Slovenským národným divadlom" width="500" height="500"
                 loading="lazy">
+            <!-- Text obteká fotku (float v CSS) -->
             <div class="about-me-text">
                 <h2>Kto som</h2>
                 <p>Ahojte, volám sa Šimon Grinč a som študent Aplikovanej informatiky na FEI STU.</p>
@@ -56,6 +83,7 @@
                     <li>Zaujímajú ma genetické algoritmy</li>
                     <li>Nemám rád MatLab</li>
                 </ul>
+                <!-- aside = doplnkový obsah, blockquote = citát -->
                 <aside>
                     <blockquote><em>If you're gonna fail, fail upwards.</em></blockquote>
                 </aside>
@@ -63,8 +91,11 @@
         </section>
     </main>
 
+    <!-- Pätička: kontakt, copyright a zdroje -->
     <footer>
+        <!-- address = kontaktné údaje autora stránky -->
         <address>
+            <!-- mailto: otvorí e-mailového klienta, tel: vytočí číslo na mobile -->
             <p><a href="mailto:xgrinc@stuba.sk">xgrinc@stuba.sk</a></p>
             <p><a href="tel:+421944441305">+421 944 441 305</a></p>
         </address>
@@ -73,6 +104,8 @@
 
         <p>
             Zdroje:
+            <!-- target="_blank" otvorí novú kartu; rel="noopener noreferrer" zabráni
+                 cudzej stránke pristupovať k našej cez window.opener -->
             Mapové podklady © <a href="https://www.openstreetmap.org/copyright" target="_blank"
                 rel="noopener noreferrer">OpenStreetMap</a> prispievatelia,
             knižnica <a href="https://leafletjs.com/" target="_blank" rel="noopener noreferrer">Leaflet</a>
@@ -80,6 +113,7 @@
         </p>
     </footer>
 
+    <!-- Skript na konci body – HTML je už načítané, takže skript nájde prvky -->
     <script src="js/script.js"></script>
 </body>
 

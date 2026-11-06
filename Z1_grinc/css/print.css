@@ -1,26 +1,41 @@
+/* =========================================================
+   print.css – štýly pre tlač životopisu (cv.html)
+   Súbor je pripojený s media="print", takže sa uplatní
+   iba pri tlači / ukladaní do PDF.
+   ========================================================= */
 @media print {
 
+  /* Hlavička, navigácia a pätička sa pri tlači skryjú –
+     na papieri nemajú význam (odkazy sa nedajú kliknúť). */
   header,
   nav,
   footer {
     display: none;
   }
 
+  /* Bez okrajov a pozadia stránky – šetrí atrament,
+     okraje rieši pravidlo @page nižšie. */
   body {
     margin: 0;
     background: none;
   }
 
+  /* Na obrazovke je .cv flex s dvoma stĺpcami; pri tlači
+     stĺpce dáme pod seba a zrušíme minimálnu výšku. */
   .cv {
-    display: block; 
+    display: block;
     min-height: auto;
   }
 
+  /* Odstránenie farebného pozadia stĺpcov (!important prebije
+     pravidlo .cv-col-left zo styles.css) a menší padding. */
   .cv-col {
     background: none !important;
     padding: 0.5rem 0;
   }
 
+  /* Ľavý stĺpec (fotka + kontakt) sa pri tlači zobrazí
+     v jednom riadku vedľa seba a zarovná doľava. */
   .cv-col-left {
     display: flex;
     flex-direction: row;
@@ -29,37 +44,48 @@
     text-align: left;
   }
 
+  /* Menšia fotka, aby nezaberala polovicu strany. */
   .cv-col-left img {
     width: 100px;
   }
 
+  /* Oddeľovacia čiara medzi zručnosťami ostáva aj pri tlači. */
   .skills li {
     border-bottom: 1px solid var(--color-brand-light);
   }
 
+  /* Úroveň zručnosti zvýraznená tučným písmom
+     (farba sa nižšie mení na čiernu, tak aspoň hrúbkou). */
   .skills-level {
     font-weight: bold;
   }
 
+  /* Všetky prvky: čierny text a žiadne tiene –
+     lepšia čitateľnosť a menšia spotreba atramentu. */
   * {
     color: var(--color-text) !important;
     box-shadow: none !important;
     text-shadow: none !important;
   }
 
+  /* Menšie písmo, aby sa životopis zmestil na jednu stranu. */
   body{
     font-size: small;
   }
 
+  /* Odkazy bez podčiarknutia – na papieri ide o obyčajný text. */
   a {
     text-decoration: none;
   }
 
+  /* Niektoré tlačové šablóny za odkazy dopisujú ich URL;
+     pri e-maile a telefóne to nechceme (text už obsahuje hodnotu). */
   a[href^="mailto:"]::after,
   a[href^="tel:"]::after {
     content: "";
   }
 
+  /* Okraje tlačenej strany. */
   @page {
     margin: 1.5cm;
   }

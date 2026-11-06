@@ -1,23 +1,35 @@
+/* =========================================================
+   styles.css – spoločné štýly pre všetky stránky webu
+   ========================================================= */
+
+/* Atribút hidden musí vždy skryť prvok – aj keď mu iné
+   pravidlo (napr. display: flex) nastaví iné zobrazenie. */
 [hidden] {
   display: none !important;
 }
 
+/* ---------- Premenné (CSS custom properties) ----------
+   Farby a rozmery na jednom mieste – pri zmene dizajnu
+   stačí upraviť hodnotu tu. */
 :root {
-  --color-brand: #4287f5;      
-  --color-brand-light: #add8e6; 
-  --color-accent: #1f5a8a;     
+  --color-brand: #4287f5;       /* hlavná modrá (navigácia, body na mape) */
+  --color-brand-light: #add8e6; /* svetlá modrá (pozadia, hover) */
+  --color-accent: #1f5a8a;      /* tmavá modrá (tlačidlá, okraje, focus) */
   --color-text: black;
   --color-bg: white;
-  --color-row-alt: #eef4fb;
-  --color-head-alt: #ADBBE6;
-  --color-lecture: #c9d8ff;
-  --color-exercise: #c8ecd3;
-  --color-sport: #ffd9b3;
+  --color-row-alt: #eef4fb;     /* pozadie párnych riadkov tabuľky */
+  --color-head-alt: #ADBBE6;    /* pozadie hlavičky tabuľky */
+  --color-lecture: #c9d8ff;     /* rozvrh: prednáška */
+  --color-exercise: #c8ecd3;    /* rozvrh: cvičenie / seminár */
+  --color-sport: #ffd9b3;       /* rozvrh: telesná kultúra */
 
-  --radius: 0.5rem;
-  --space: 1rem;
+  --radius: 0.5rem;             /* zaoblenie rohov */
+  --space: 1rem;                /* základná medzera */
 }
 
+/* ---------- Vlastné písmo Poppins ----------
+   Tri rezy tej istej rodiny – prehliadač si podľa
+   font-weight / font-style vyberie správny súbor. */
 @font-face {
   font-family: "Poppins";
   src: url(../fonts/poppins/Poppins-Regular.woff2) format("woff2");
@@ -39,11 +51,18 @@
   font-style: italic;
 }
 
+/* ---------- Prístupnosť ---------- */
+
+/* Viditeľný obrys pri ovládaní klávesnicou (Tab),
+   pri kliknutí myšou sa nezobrazí. */
 :focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
 }
 
+/* Odkaz „Preskočiť na obsah“ – štandardne vysunutý nad
+   okraj obrazovky (translateY(-100%)), zobrazí sa až po
+   stlačení Tab. Pomáha používateľom klávesnice a čítačiek. */
 .skip-link {
   position: absolute;
   top: 0;
@@ -59,21 +78,27 @@
   transition: transform 0.2s ease;
 }
 
+/* Po zameraní sa odkaz plynulo zasunie dole na obrazovku. */
 .skip-link:focus {
   transform: translateY(0);
 }
 
+/* ---------- Základné rozloženie ---------- */
+
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif; /* sans-serif = záloha, ak sa font nenačíta */
   margin: 0;
 }
 
+/* Obsah má max. šírku 1200 px a je vycentrovaný. */
 main {
   max-width: 1200px;
   margin-inline: auto;
   padding-inline: 1rem;
 }
 
+/* clamp(min, preferovaná, max) – veľkosť písma sa plynulo
+   mení podľa šírky okna (vw), no nikdy neprekročí hranice. */
 h1 {
   font-size: clamp(1.25rem, 5vw, 2rem);
 }
@@ -82,12 +107,14 @@ h1 {
   font-size: clamp(0.75rem, 2.5vw, 1rem);
 }
 
+/* ---------- Monogram (SVG logo s iniciálami) ---------- */
+
 .monogram-bg {
-  fill: var(--color-accent);
+  fill: var(--color-accent);   /* farba kruhu */
 }
 
 .monogram-text {
-  fill: var(--color-bg);
+  fill: var(--color-bg);       /* farba písmen */
   font-size: 1.4rem;
   font-weight: 700;
 }
@@ -95,18 +122,23 @@ h1 {
 .monogram {
   width: 50px;
   height: 50px;
-  flex-shrink: 0; 
+  flex-shrink: 0;  /* vo flex hlavičke sa logo nezmenší */
 }
 
+/* Na mobile je logo väčšie. */
 @media screen and (max-width: 768px) {
   .monogram {
     width: 70px;
     height: 70px;
   }
 }
+
+/* ---------- Hlavička ---------- */
+
+/* Logo, meno a podnadpis v jednom riadku, vycentrované. */
 header {
   display: flex;
-  align-items: center; 
+  align-items: center;
   gap: 0.75rem;
   max-width: 1200px;
   margin-inline: auto;
@@ -114,6 +146,10 @@ header {
   padding: 7px 0;
 }
 
+/* ---------- Navigácia ---------- */
+
+/* Hamburger tlačidlo je na desktope skryté, zobrazí sa
+   až v media query pre mobil nižšie. */
 .hamburger {
   display: none;
   background: none;
@@ -127,6 +163,7 @@ nav{
   padding: 1px 0;
 }
 
+/* Odkazy menu vedľa seba, vycentrované. */
 .nav-links {
   display: flex;
   align-items: center;
@@ -143,11 +180,16 @@ nav{
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
+/* Efekt pri prejdení myšou. */
 .nav-links a:hover {
   background-color: var(--color-brand-light);
   color: var(--color-accent);
 }
 
+/* Zvýraznenie aktuálnej stránky v menu (aria-current="page")
+   a aktívneho filtra v rozvrhu (aria-pressed="true").
+   Štýl je naviazaný na ARIA atribút, takže vizuálny stav
+   a stav pre čítačky obrazovky sú vždy v súlade. */
 .nav-links a[aria-current="page"], .schedule-filter button[aria-pressed="true"] {
   background-color: var(--color-brand-light);
   color: var(--color-accent);
@@ -155,22 +197,24 @@ nav{
 }
 
 .hamburger img {
-  width: 36px;  
+  width: 36px;
   height: 36px;
 }
 
+/* Mobilná navigácia: menu je zbalené, otvára sa
+   hamburgerom (JS pridá triedu .is-open). */
 @media screen and (max-width: 768px) {
   nav {
-    padding: 0.75rem 1rem;   
+    padding: 0.75rem 1rem;
   }
 
   .nav-links {
     display: none;
-    flex-direction: column;
+    flex-direction: column;  /* odkazy pod sebou */
   }
 
    .nav-links.is-open {
-    display: flex;       
+    display: flex;
    }
 
    .nav-links a {
@@ -183,35 +227,48 @@ nav{
   }
 }
 
+/* ---------- Zoznamy a obrázky ---------- */
+
+/* Predvolene zoznamy bez odrážok (menu, zručnosti...). */
 ul{
   list-style-type: none;
 }
 
+/* Výnimka: zoznam na úvodnej stránke má klasické bodky. */
 .about-me ul{
   list-style-type: disc;
 }
 
+/* Responzívne obrázky – nikdy nepretečú rodiča
+   a zachovajú pomer strán. */
 img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
+/* ---------- Pätička ---------- */
 footer {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* ---------- Úvodná stránka (index.html) ---------- */
+
+/* overflow: hidden vytvorí nový blokový kontext, takže
+   sekcia „obalí“ aj obrázok s float a nezrúti sa. */
 .about-me {
   margin: 10px;
-  overflow: hidden; 
+  overflow: hidden;
 }
 
+/* Text tečie vedľa obrázka a nepodtečie pod neho. */
 .about-me-text {
-  overflow: hidden; 
+  overflow: hidden;
 }
 
+/* Fotka obtekaná textom zľava. */
 .about-me img {
   float: left;
   width: 280px;
@@ -223,26 +280,35 @@ blockquote{
   font-size: larger;
 }
 
+/* Na mobile fotka bez obtekania, menšia a vycentrovaná. */
 @media screen and (max-width: 768px) {
   .about-me img {
     float: none;
     display: block;
-    width: 180px;      
+    width: 180px;
     margin: 0 auto 1rem;
   }
 }
 
+/* ---------- Životopis (cv.html) ---------- */
+
+/* Dva stĺpce vedľa seba; flex-wrap ich pri úzkom
+   okne zalomí pod seba. Min. výška = okno mínus
+   približná výška hlavičky a pätičky. */
 .cv {
   display: flex;
   flex-wrap: wrap;
-  min-height: calc(100vh - 200px); 
+  min-height: calc(100vh - 200px);
 }
 
+/* flex: 1 1 300px – stĺpec rastie aj sa zmenšuje,
+   základná šírka 300 px. */
 .cv-col {
   flex: 1 1 300px;
   padding: 2rem;
 }
 
+/* Ľavý stĺpec: fotka a kontakt pod sebou, na stred. */
 .cv-col-left {
   background-color: var(--color-brand-light);
   display: flex;
@@ -261,6 +327,7 @@ blockquote{
   background-color: var(--color-bg);
 }
 
+/* Medzera nad každou sekciou okrem prvej. */
 .cv-col-right h2 {
   margin-top: 2rem;
 }
@@ -269,6 +336,7 @@ blockquote{
   margin-top: 0;
 }
 
+/* Zoznam zručností: názov vľavo, úroveň vpravo. */
 .skills {
   list-style: none;
   padding: 0;
@@ -276,7 +344,7 @@ blockquote{
 
 .skills li {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* roztlačí názov a úroveň na okraje */
   gap: 1rem;
   padding: 0.5rem 0;
   border-bottom: 1px solid var(--color-brand-light);
@@ -285,9 +353,10 @@ blockquote{
 .skills-level {
   color: var(--color-accent);
   font-weight: bold;
-  white-space: nowrap;
+  white-space: nowrap;  /* úroveň sa nezalomí do dvoch riadkov */
 }
 
+/* Na mobile stĺpce vždy na celú šírku. */
 @media screen and (max-width: 768px) {
   .cv {
     min-height: auto;
@@ -298,10 +367,14 @@ blockquote{
   }
 }
 
+/* ---------- Mapa (map.html) ---------- */
+
 .map-page {
   padding-block: 1rem;
 }
 
+/* Leaflet potrebuje kontajner s pevnou výškou,
+   inak sa mapa nevykreslí. */
 .map {
   width: 100%;
   height: 400px;
@@ -309,17 +382,21 @@ blockquote{
   margin-block: 1rem;
 }
 
+/* Informačné hlásenia (prázdna mapa, stav rozvrhu). */
 .map-empty, .schedule-message {
   padding: 1rem;
   background-color: var(--color-brand-light);
   border-radius: var(--radius);
 }
 
+/* Zoznam bodov používateľa – s bodkami (prebíja ul vyššie). */
 .points-list {
   list-style: disc;
   padding-left: 1.5rem;
 }
 
+/* Formulár na výpočet vzdialenosti – prvky v riadku,
+   zarovnané na spodný okraj, pri nedostatku miesta sa zalomia. */
 .distance-form {
   display: flex;
   flex-wrap: wrap;
@@ -328,6 +405,7 @@ blockquote{
   margin-top: 1rem;
 }
 
+/* Popis nad roletkou (label obaľuje select). */
 .distance-form label {
   display: flex;
   flex-direction: column;
@@ -340,6 +418,7 @@ blockquote{
   margin-top: 0.25rem;
 }
 
+/* Spoločný vzhľad tlačidiel – formulár mapy a filter rozvrhu. */
 .distance-form button, .schedule-filter button{
   padding: 0.5rem 1rem;
   background-color: var(--color-accent);
@@ -348,7 +427,7 @@ blockquote{
   border-radius: var(--radius);
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease;
-  font: inherit;
+  font: inherit;  /* tlačidlá štandardne nededia písmo – tu áno */
 }
 
 .distance-form button:hover, .schedule-filter button:hover {
@@ -356,6 +435,7 @@ blockquote{
   color: var(--color-accent);
 }
 
+/* Výsledok výpočtu vzdialenosti. */
 #distanceResult {
   margin-top: 0.75rem;
   font-weight: bold;
@@ -367,6 +447,11 @@ blockquote{
   }
 }
 
+/* ---------- Pracovné prostredie (workspace.html) ---------- */
+
+/* position: relative – body (hotspoty) sa umiestňujú
+   absolútne voči tomuto kontajneru. --panel-height je
+   výška popisného panelu na mobile. */
 .workspace {
   --panel-height: 8rem;
   position: relative;
@@ -378,6 +463,10 @@ blockquote{
   display: block;
 }
 
+/* Samotné tlačidlo má nulovú veľkosť – viditeľné sú iba
+   jeho absolútne umiestnené potomky (bodka a panel).
+   Tlačidlo slúži na to, aby sa dal hotspot zamerať
+   klávesnicou a mal prístupný názov. */
 .hotspot {
   display: block;
   width: 0;
@@ -388,6 +477,9 @@ blockquote{
   cursor: pointer;
 }
 
+/* Modrá bodka. Pozícia ide z premenných --top a --left,
+   ktoré nastavuje workspace.js v percentách. translate(-50%,-50%)
+   vycentruje bodku presne na danú súradnicu. */
 .hotspot-dot {
   position: absolute;
   top: var(--top);
@@ -401,11 +493,14 @@ blockquote{
   transition: background-color 0.2s ease;
 }
 
+/* Stmavnutie bodky pri hover / focus. */
 .hotspot:hover .hotspot-dot,
 .hotspot:focus .hotspot-dot {
   background-color: var(--color-accent);
 }
 
+/* Obrys sa nekreslí okolo neviditeľného tlačidla (0×0),
+   ale okolo bodky. */
 .hotspot:focus-visible {
   outline: none;
 }
@@ -415,6 +510,7 @@ blockquote{
   outline-offset: 2px;
 }
 
+/* Spoločný vzhľad popisného panelu a nápovedy. */
 .hotspot-panel,
 .workspace-hint {
   padding: calc(var(--space) / 2);
@@ -424,6 +520,9 @@ blockquote{
   text-align: left;
 }
 
+/* Na desktope sa panel zobrazí pod bodkou.
+   opacity + visibility (namiesto display) umožní plynulý prechod
+   a zároveň skrytý panel nie je klikateľný. */
 .hotspot-panel {
   position: absolute;
   top: var(--top);
@@ -437,19 +536,24 @@ blockquote{
 }
 
 .hotspot-panel strong {
-  display: block;
+  display: block;  /* nadpis na samostatnom riadku */
 }
 
+/* Zobrazenie panelu pri hover alebo focus (aj ťuknutie na mobile). */
 .hotspot:hover .hotspot-panel,
 .hotspot:focus .hotspot-panel {
   opacity: 1;
   visibility: visible;
 }
 
+/* Nápoveda je potrebná iba na mobile. */
 .workspace-hint {
   display: none;
 }
 
+/* Mobil: panel by na malom obrázku zakrýval ostatné body,
+   preto sa všetky panely zobrazujú v pevnom pruhu POD obrázkom.
+   margin-bottom kontajnera vytvorí pre tento pruh miesto. */
 @media screen and (max-width: 768px) {
   .workspace {
     margin-bottom: calc(var(--panel-height) + var(--space));
@@ -458,30 +562,38 @@ blockquote{
   .hotspot-panel,
   .workspace-hint {
     position: absolute;
-    top: 100%;
+    top: 100%;        /* hneď pod obrázkom */
     left: 0;
     width: 100%;
     height: var(--panel-height);
     margin: var(--space) 0 0;
     box-sizing: border-box;
-    overflow: auto;
+    overflow: auto;   /* dlhší text sa dá posúvať */
   }
 
   .workspace-hint {
     display: block;
   }
 
+  /* Keď je nejaký hotspot aktívny, nápoveda sa skryje,
+     aby sa neprekrývala s panelom. :has() = „rodičovský selektor“. */
   .workspace:has(.hotspot:hover, .hotspot:focus) .workspace-hint {
     visibility: hidden;
   }
 }
 
+/* ---------- Tabuľka rozvrhu (schedule.html) ---------- */
+
+/* Obal umožní vodorovné posúvanie tabuľky na úzkych obrazovkách
+   bez toho, aby sa rozbilo rozloženie celej stránky. */
 .table-wrapper {
   width: 100%;
   overflow-x: auto;
   margin-block: 10px;
 }
 
+/* min-width zabezpečí, že sa tabuľka príliš nestlačí
+   (radšej sa posúva). */
 table {
   width: 100%;
   min-width: 600px;
@@ -495,12 +607,16 @@ th, td {
   white-space: nowrap;
 }
 
+/* Prvý stĺpec (dni) ostáva pri vodorovnom posúvaní prilepený
+   vľavo. Potrebuje pozadie, inak by cezeň presvital obsah. */
 th:first-child {
   position: sticky;
   left: 0;
   background-color: var(--color-bg);
 }
 
+/* „Zebra“ – párne riadky s farebným pozadím (vrátane
+   prilepenej bunky s dňom). */
 tbody tr:nth-of-type(even),
 tbody tr:nth-of-type(even) > :first-child {
   background-color: var(--color-row-alt);
@@ -511,6 +627,8 @@ thead th:first-child {
   background-color: var(--color-head-alt);
 }
 
+/* Ak má používateľ v systéme zapnuté obmedzenie animácií,
+   všetky prechody a animácie sa prakticky vypnú. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -522,6 +640,7 @@ thead th:first-child {
   }
 }
 
+/* Farby podľa typu hodiny (triedy na <td> v rozvrhu). */
 .lecture {
   background-color: var(--color-lecture);
 }
@@ -535,6 +654,8 @@ thead th:first-child {
   background-color: var(--color-sport);
 }
 
+/* Práve prebiehajúca hodina (triedu pridáva script.js):
+   vnútorný obrys, tučné písmo a mierne stmavenie. */
 .is-current {
   outline:solid 3px var(--color-accent);
   outline-offset: -3px;
@@ -542,6 +663,9 @@ thead th:first-child {
   filter: brightness(0.85);
 }
 
+/* Hodina odfiltrovaná filtrom: bunka ostáva v tabuľke
+   (aby sa nerozbila mriežka colspan), ale je „neviditeľná“ –
+   bez farby, textu aj zvýraznenia. */
 .is-hidden {
   background-color: transparent;
   color:transparent;
@@ -549,6 +673,7 @@ thead th:first-child {
   filter:none;
 }
 
+/* Tlačidlá filtra v riadku so zalamovaním. */
 .schedule-filter {
   display: flex;
   flex-wrap: wrap;
