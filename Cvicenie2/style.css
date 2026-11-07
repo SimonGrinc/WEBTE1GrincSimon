@@ -1,0 +1,69 @@
+@font-face {
+    font-family: "MojFont";
+    src: url("moj-font.ttf") format("truetype");
+}
+
+body {
+    font-family: "MojFont", sans-serif;
+    background-color: #eeeeee;
+    margin: 0;
+}
+
+header {
+    background-color: #333333;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+main {
+    width: 80%;
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+section {
+    background-color: white;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+img {
+    width: 300px;
+    max-width: 100%;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 40px;
+    font-family: "MojFont", sans-serif;
+}
+
+p {
+    font-size: 18px;
+}
+
+h2 {
+    color: darkblue;
+}
+
+p {
+    text-align: center;
+}
+
+img {
+    border-radius: 10px;
+}
+
+section {
+    border: 2px solid black;
+}
+
+#map {
+    height: 400px;
+}
