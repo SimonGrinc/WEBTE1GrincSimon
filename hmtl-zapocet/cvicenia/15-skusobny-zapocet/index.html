@@ -1,4 +1,86 @@
 <!doctype html>
-<html lang="sk"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Skúšobný zápočet</title><link rel="stylesheet" href="style.css"><script src="app.js" defer></script></head>
-<body><main><h1>Obedové menu</h1><!-- TODO: Doplň celé rozhranie podľa zadania. --></main></body></html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8">
+  <!-- viewport: na mobile sa stránka nezmenší ako desktopová, ale prispôsobí šírke -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Skúšobný zápočet</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- defer: skript sa spustí až po načítaní celého HTML, takže prvky už existujú -->
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main>
+    <h1>Obedové menu</h1>
+
+    <!-- ===== Načítanie a filtre ===== -->
+    <section class="controls" aria-label="Načítanie a filtre">
+      <button id="load-button" type="button">Načítať menu</button>
+
+      <!-- label for="..." = prepojenie s prvkom podľa jeho id -->
+      <div class="field">
+        <label for="day-filter">Deň</label>
+        <!-- autocomplete="off": prehliadač po obnovení stránky neobnoví starú voľbu,
+             takže počiatočný deň je vždy pondelok -->
+        <select id="day-filter" autocomplete="off">
+          <option value="1">Pondelok</option>
+          <option value="2">Utorok</option>
+        </select>
+      </div>
+
+      <div class="field field--inline">
+        <input id="soup-filter" type="checkbox" autocomplete="off">
+        <label for="soup-filter">Len polievky</label>
+      </div>
+    </section>
+
+    <!-- role="status": čítačka obrazovky prečíta každú zmenu textu (chyby, úspech) -->
+    <p id="status" class="status" role="status"></p>
+
+    <!-- ===== Výsledky ===== -->
+    <section aria-labelledby="results-heading">
+      <h2 id="results-heading">Jedlá</h2>
+      <p id="count" class="count"></p>
+      <div id="results" class="cards"></div>
+    </section>
+
+    <!-- ===== Formulár na nové jedlo ===== -->
+    <section aria-labelledby="form-heading">
+      <h2 id="form-heading">Pridať jedlo</h2>
+      <!-- novalidate: vypne vstavané bubliny prehliadača, všetko kontroluje JavaScript
+           a chyby zobrazí v #status -->
+      <form id="meal-form" class="meal-form" novalidate>
+        <div class="field">
+          <label for="meal-name">Názov</label>
+          <input id="meal-name" name="name" type="text" maxlength="80">
+        </div>
+
+        <div class="field">
+          <label for="meal-day">Deň</label>
+          <select id="meal-day" name="day">
+            <option value="1">Pondelok</option>
+            <option value="2">Utorok</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="meal-type">Typ</label>
+          <select id="meal-type" name="type">
+            <option value="soup">Polievka</option>
+            <option value="main">Hlavné jedlo</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="meal-price">Cena (€)</label>
+          <!-- type="number" + step="0.01": dovolí centy. Slovenský prehliadač ukáže
+               čiarku (4,50), ale .value v JavaScripte vráti vždy bodku ("4.5") -->
+          <input id="meal-price" name="price" type="number" step="0.01" min="0.01" inputmode="decimal">
+        </div>
+
+        <button type="submit">Pridať</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

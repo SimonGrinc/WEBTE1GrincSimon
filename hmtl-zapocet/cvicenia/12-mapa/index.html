@@ -3,15 +3,94 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mapa – doplnenie projektu – precvičenie</title>
+  <title>HTML a CSS opakovanie</title>
   <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
 </head>
 <body>
+  <header class="site-header">
+    <p class="logo">Študentský portál</p>
+    <nav aria-label="Hlavná navigácia">
+      <ul class="nav-list">
+        <li><a href="#rozvrh">Rozvrh</a></li>
+        <li><a href="#prihlaska">Prihláška</a></li>
+        <li><a href="#predmety">Predmety</a></li>
+      </ul>
+    </nav>
+  </header>
+
   <main>
-    <h1>Mapa – doplnenie projektu</h1>
-    <p>Rozpracované cvičenie: otvor ZADANIE.md a doplň TODO v script.js.</p>
-    <p>Túto úlohu dokonči v pracovnej kópii pôvodného projektu html. Postup je v ZADANIE.md.</p>
+    <h1>HTML a CSS opakovanie</h1>
+
+    <section id="prihlaska">
+      <h2>Prihláška na konzultáciu</h2>
+      <form class="contact-form">
+        <label for="student-name">Meno a priezvisko</label>
+        <input id="student-name" name="name" type="text" autocomplete="name" required>
+
+        <label for="student-email">E-mail</label>
+        <input id="student-email" name="email" type="email" autocomplete="email" required>
+
+        <label for="consult-date">Dátum konzultácie</label>
+        <input id="consult-date" name="date" type="date">
+
+        <button type="submit">Odoslať</button>
+      </form>
+    </section>
+
+    <section id="rozvrh">
+      <h2>Rozvrh</h2>
+      <div class="table-wrapper">
+        <table>
+          <caption>Rozvrh na pondelok</caption>
+          <thead>
+            <tr>
+              <th scope="col">Čas</th>
+              <th scope="col">Predmet</th>
+              <th scope="col">Miestnosť</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">8:00 – 10:00</th>
+              <td>Matematika</td>
+              <td>A 101</td>
+            </tr>
+            <tr>
+              <th scope="row">10:00 – 12:00</th>
+              <td>Programovanie</td>
+              <td>B 204</td>
+            </tr>
+            <tr>
+              <th scope="row">13:00 – 15:00</th>
+              <td>Webové technológie</td>
+              <td>C 310</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="predmety">
+      <h2>Predmety</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Matematika</h3>
+          <p>Lineárna algebra a základy analýzy.</p>
+        </article>
+        <article class="card">
+          <h3>Programovanie</h3>
+          <p>Algoritmy, dátové štruktúry a JavaScript.</p>
+        </article>
+        <article class="card">
+          <h3>Webové technológie</h3>
+          <p>HTML, CSS, prístupnosť a práca s DOM.</p>
+        </article>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Študentský portál</p>
+  </footer>
 </body>
 </html>
