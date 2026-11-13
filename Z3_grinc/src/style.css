@@ -1,0 +1,6 @@
+/* Menší nadpis kalendára na mobile */
+@media (max-width: 575.98px) {
+  .fc .fc-toolbar-title {
+    font-size: 1.1rem;
+  }
+}
