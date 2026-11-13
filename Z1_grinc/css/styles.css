@@ -449,6 +449,40 @@ blockquote{
 
 /* ---------- Pracovné prostredie (workspace.html) ---------- */
 
+/* =====================================================================
+   AKO FUNGUJE POSITION (relative vs. absolute)
+   =====================================================================
+   static   (predvolené)
+     - prvok je v toku dokumentu, top/left nefungujú.
+
+   relative
+     - prvok ostane v toku a jeho pôvodné miesto ostane rezervované,
+     - top/left ho posunú od TOHO PÔVODNÉHO MIESTA, rodiča ignoruje,
+     - bez top/left sa nepohne, ale stane sa RÁMCOM pre absolute potomkov.
+
+   absolute
+     - prvok vypadne z toku, ostatné prvky sa správajú, akoby tam nebol,
+     - top/left sa počítajú od NAJBLIŽŠIEHO POZÍCIOVANÉHO PREDKA
+       (predok s position inou ako static: relative, absolute,
+       fixed, sticky; rámcom je aj predok s transform),
+     - percentá v left = zo šírky rámca, v top = z výšky rámca,
+     - ak taký predok nie je, rámcom je okno prehliadača.
+
+   Preto: rodič relative (rámec) + potomok absolute (umiestni sa voči nemu).
+
+   Na tejto stránke:
+     .workspace       relative  → rámec pre bodky aj panely
+     button.hotspot   static    → nie je pozíciovaný a má 0 × 0 px, takže
+                                  bodka aj panel ho „preskočia“ a umiestnia
+                                  sa voči .workspace
+     .hotspot-dot     absolute  → --top/--left v %, translate(-50%,-50%)
+                                  posunie stred bodky na súradnicu
+     .hotspot-panel   absolute  → rovnaké --top/--left ako bodka,
+                                  margin-top ho posunie pod ňu
+     mobil: .hotspot-panel      → top: 100%, left: 0 = pod celým obrázkom
+                                  (rámec ostáva .workspace)
+   ===================================================================== */
+
 /* position: relative – body (hotspoty) sa umiestňujú
    absolútne voči tomuto kontajneru. --panel-height je
    výška popisného panelu na mobile. */

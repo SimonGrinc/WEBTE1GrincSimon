@@ -5,4 +5,71 @@ article, fieldset { border: 1px solid #ccc; padding: 1rem; margin: .5rem 0; }
 pre { white-space: pre-wrap; overflow-wrap: anywhere; }
 :focus-visible { outline: 3px solid #1769aa; outline-offset: 3px; }
 [hidden] { display: none !important; }
-/* TODO: Podľa zadania doplň vzhľad, triedy a responzivitu. */
+
+/* Šírka prvkov vrátane paddingu a rámika – nič nepretečie cez okraj. */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ---------- Hlavička a navigácia ---------- */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;             /* na úzkej obrazovke sa nav zalomí pod logo */
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.logo { margin: 0; font-weight: bold; }
+
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list a { color: #1769aa; }
+
+/* ---------- Formulár ---------- */
+.contact-form input {
+  width: 100%;
+  max-width: 24rem;            /* na počítači nie príliš široké */
+}
+
+/* ---------- Tabuľka ---------- */
+/* Ak by sa tabuľka nezmestila, posúva sa iba ona, nie celá stránka. */
+.table-wrapper { overflow-x: auto; }
+
+table { border-collapse: collapse; width: 100%; }
+caption { text-align: left; font-weight: bold; margin-bottom: .5rem; }
+th, td { border: 1px solid #ccc; padding: .4rem .6rem; text-align: left; }
+thead th { background: #eef3f8; }
+
+/* ---------- Karty ---------- */
+.cards {
+  display: flex;               /* karty v rade vedľa seba */
+  gap: 1rem;
+}
+
+.card {
+  flex: 1;                     /* každá karta rovnaký diel šírky */
+  min-width: 0;                /* dlhé slová nenafúknu kartu cez okraj */
+  margin: 0;
+}
+.card h3 { margin-top: 0; }
+
+/* Pod 768 px karty pod seba. */
+@media (max-width: 767px) {
+  .cards { flex-direction: column; }
+}
+
+/* ---------- Pätička ---------- */
+.site-footer {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ccc;
+  color: #555;
+}
